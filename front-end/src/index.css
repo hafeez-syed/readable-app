@@ -3,3 +3,80 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1070px;
+  padding: 20px;
+  min-width: 1070px;
+}
+
+.categories-wrapper, .posts-wrapper {
+  display: flow-root;
+  float: left;
+  justify-content: space-around;
+  margin: 10px 20px;
+}
+
+.categories-list {
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.posts-list, .sorting-wrapper {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+  margin-bottom: 2rem;
+  margin-left: 3.5rem;
+  padding: 20px;
+}
+
+.sorting-wrapper {
+  background: #fff;
+  margin-bottom: 2rem;  min-width: 100px;
+  position: absolute;
+  right: 0;
+}
+
+.posts-list .grid-logo {
+  color: #999;
+  text-align: right;
+}
+
+.sorting-logo {
+  color: #02b3e4;
+}
+
+.posts-list .category {
+  color: #999;
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.posts-list .title {
+  color: #02b3e4;
+  display: block;
+  font-weight: bold;
+  height: 30px;
+  text-align: left;
+}
+
+.posts-list .votes {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: right;
+}

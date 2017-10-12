@@ -1,0 +1,26 @@
+import React from 'react';
+import {TiThumbsUp, TiArrowSortedDown, TiArrowSortedUp, TiTime} from 'react-icons/lib/ti';
+
+const SortList = (sortPost) => {
+    console.log(sortPost);
+    const updateSort = sortPost.updateSort;
+    return (
+        <div className='sorting-wrapper'>
+            <h2>Sort</h2>
+            <div className='sort-list'>
+                <div className='sorting-logo' title='Sort by vote'>
+                    <TiThumbsUp size={60} />
+                    <a onClick={updateSort('vote', 'up')}><TiArrowSortedUp size={30} /></a>
+                    <a onClick={updateSort('vote', 'up')}><TiArrowSortedDown size={30} /></a>
+                </div>
+                <div className='sorting-logo' title='Sort by time'>
+                    <TiTime size={60} />
+                    <a onClick={updateSort('time', 'up')}><TiArrowSortedUp size={30} /></a>
+                    <a onClick={updateSort('time', 'up')}><TiArrowSortedDown size={30} /></a>
+                </div>
+            </div>
+        </div>
+    )
+};
+
+export default SortList;

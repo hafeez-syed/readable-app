@@ -10,14 +10,11 @@ const HEADERS = {
 
 const fetchCategories = () => {
     return fetch(`${URL}/categories`, HEADERS)
-        .then((res) => {
-        console.log(res);
-        res.json()
-    })
+        .then((res) => res.json());
 };
 
 const fetchPosts = () => {
-    return fetch(`${URL}/categories`)
+    return fetch(`${URL}/posts`, HEADERS)
         .then((res) => res.json())
 };
 
