@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 const CategoryList = (categories) => {
     const allCategories = categories.categories;
@@ -9,7 +10,11 @@ const CategoryList = (categories) => {
             <ul>
                 {
                     allCategories.length && allCategories.map((cat) => (
-                        <li className='categories-list' key={cat.path}>{_.capitalize(cat.name)}</li>
+                        <li className='categories-list' key={cat.path}>
+                            <Link to={`/categories/${cat.name}`} >
+                                {_.capitalize(cat.name)}
+                            </Link>
+                        </li>
                     ))
                 }
             </ul>
