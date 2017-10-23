@@ -17,6 +17,8 @@ class App extends Component {
     componentDidMount() {
         fetchCategories()
             .then((data) => {
+                console.log('data');
+                console.log(data);
                 this.setState({categories: data.categories});
             });
 
