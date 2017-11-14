@@ -8,6 +8,7 @@ import MdLibraryBooks from 'react-icons/lib/md/library-books';
 
 class App extends Component {
     state = {
+        postOrder: 'asc',
         categories: [],
         post: [],
         comment: [],
@@ -26,12 +27,13 @@ class App extends Component {
             .then((posts) => {
                 console.log('posts');
                 console.log(posts);
-                this.setState({posts});
+                this.setState({post: posts});
             })
     };
 
     updateSort = (type, order) => {
         console.log(type, order);
+        this.setState({postOrder: order});
     };
 
     render() {
@@ -42,7 +44,7 @@ class App extends Component {
                     <h1 className="App-title">Readable</h1>
                 </header>
                 <CategoryList categories={this.state.categories} />
-                <PostList posts={this.state.posts} />
+                <PostList posts={this.state.post} order={this.state.postOrder} />
                 <SortList updateSort={this.updateSort} />
             </div>
     );

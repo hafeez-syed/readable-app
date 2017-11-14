@@ -10,13 +10,13 @@ const SortList = (sortPost) => {
             <div className='sort-list'>
                 <div className='sorting-logo' title='Sort by vote'>
                     <TiThumbsUp size={60} />
-                    <a onClick={updateSort('vote', 'up')}><TiArrowSortedUp size={30} /></a>
-                    <a onClick={updateSort('vote', 'up')}><TiArrowSortedDown size={30} /></a>
+                    <a onClick={() => updateSort('voteScore', 'up')}><TiArrowSortedUp size={30} /></a>
+                    <a onClick={() => updateSort('voteScore', 'down')}><TiArrowSortedDown size={30} /></a>
                 </div>
                 <div className='sorting-logo' title='Sort by time'>
                     <TiTime size={60} />
-                    <a onClick={updateSort('time', 'up')}><TiArrowSortedUp size={30} /></a>
-                    <a onClick={updateSort('time', 'up')}><TiArrowSortedDown size={30} /></a>
+                    <a onClick={() => updateSort('timestamp', 'up')}><TiArrowSortedUp size={30} /></a>
+                    <a onClick={() => updateSort('timestamp', 'down')}><TiArrowSortedDown size={30} /></a>
                 </div>
             </div>
         </div>

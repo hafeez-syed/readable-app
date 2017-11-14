@@ -2,10 +2,10 @@ import React from 'react';
 import _ from 'lodash';
 import Grid from 'react-icons/lib/ti/th-small';
 
-const PostList = (posts, type, order) => {
-    const allPosts = posts.posts;
-    const postType = type || 'title';
-    const postOrder = order || 'asc';
+const PostList = ({posts, order, type}) => {
+    const allPosts = posts;
+    const postType = type ? type : 'title';
+    const postOrder = order === 'up' ? 'asc' : 'desc';
     return (
         <div className='posts-wrapper'>
             <ul>
