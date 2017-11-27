@@ -1,9 +1,10 @@
 export const POST_ADDED = 'POST_ADDED';
 
-export default postsAction = () => {
+const postsAction = (index) => {
     return {
         type: POST_ADDED,
         index
     };
 };
 
+export default postsAction;

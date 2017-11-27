@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 const CategoryList = (categories) => {
     const allCategories = categories.categories;
@@ -23,8 +22,4 @@ const CategoryList = (categories) => {
     )
 };
 
-const mapStateToProps = ({category}) => ({
-    category
-});
-
-export default connect(mapStateToProps)(CategoryList);
+export default CategoryList;
