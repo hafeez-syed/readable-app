@@ -10,12 +10,15 @@ const HEADERS = {
 
 const fetchCategories = () => {
     return fetch(`${URL}/categories`, HEADERS)
-        .then((res) => res.json());
+        .then(res => res.json())
+        .then(data => data.categories);
+
 };
 
 const fetchPosts = () => {
     return fetch(`${URL}/posts`, HEADERS)
-        .then((res) => res.json())
+        .then(res => res.json())
+	    .then(data => data.posts);
 };
 
 const fetchComments = () => {

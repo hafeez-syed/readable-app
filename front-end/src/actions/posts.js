@@ -1,9 +1,18 @@
+import * as searchApis from '../utils/apis';
+
 export const POST_ADDED = 'POST_ADDED';
 
-export default postsAction = () => {
+export const fetchPosts = () => (dispatch) => {
+	searchApis.fetchPosts()
+		.then(posts => dispatch(postsAction(posts)));
+};
+
+
+const postsAction = (posts) => {
     return {
         type: POST_ADDED,
-        index
+	    posts
     };
 };
 
+export default fetchPosts;

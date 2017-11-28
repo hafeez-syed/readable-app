@@ -1,9 +1,17 @@
-export const CATEGORY_CHANGED = 'CATEGORY_CHANGED';
+import * as searchApis from '../utils/apis';
 
-export default categoriesAcion = () => {
+export const CATEGORY_SUCCESS = 'CATEGORY_SUCCESS';
+
+export const fetchCategories = () => (dispatch) => {
+	searchApis.fetchCategories()
+		.then(categories => dispatch(categoriesAction(categories)));
+};
+
+const categoriesAction = (categories) => {
     return {
-        type: CATEGORY_CHANGED,
-        index
+        type: CATEGORY_SUCCESS,
+	    categories
     };
 };
 
+export default fetchCategories;
