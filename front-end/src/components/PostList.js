@@ -8,6 +8,7 @@ const PostList = ({posts, order, type}) => {
     const postOrder = order === 'up' ? 'asc' : 'desc';
     return (
         <div className='posts-wrapper'>
+            <p>I'm postList</p>
             <ul>
                 {
                     allPosts && allPosts.length && _.orderBy(allPosts, postType, postOrder).map((post) => (

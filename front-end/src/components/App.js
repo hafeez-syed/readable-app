@@ -1,7 +1,7 @@
-import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Main from './Main';
+import { withRouter } from 'react-router-dom';
+import Wrapper from './Wrapper';
 import { actions } from '../actions/';
 
 const mapStateToProps = (state) => {
@@ -16,6 +16,6 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(actions, dispatch);
 };
 
-const App = connect(mapStateToProps, mapDispatchToProps)(Main);
+const App = withRouter(connect(mapStateToProps, mapDispatchToProps)(Wrapper));
 
 export default App

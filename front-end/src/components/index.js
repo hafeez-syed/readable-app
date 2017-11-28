@@ -1,9 +1,9 @@
 import App from './App';
-import Main from './Main';
+import Wrapper from './Wrapper';
 import Category from './Category';
 
 export {
 	App,
-	Main,
+	Wrapper,
 	Category
 };
