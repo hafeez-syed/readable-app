@@ -1,8 +1,8 @@
-import  CATEGORY_CHANGED from '../actions/categories';
+import { CATEGORY_SUCCESS } from '../actions/categories';
 
 const categories = (state = [], action) => {
 	switch(action.type) {
-		case CATEGORY_CHANGED:
+		case CATEGORY_SUCCESS:
 			return action.categories;
 		default:
 			return state;

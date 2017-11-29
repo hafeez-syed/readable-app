@@ -80,3 +80,12 @@ li {
   font-weight: bold;
   text-align: right;
 }
+
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #02b3e4;
+}

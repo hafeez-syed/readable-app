@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const App = withRouter(connect(mapStateToProps, mapDispatchToProps)(Wrapper));
 
-export default App
+export default App;

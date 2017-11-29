@@ -1,11 +1,10 @@
-import fetchCategories from './categories';
+import fetchCategories, { categoriesAction } from './categories';
 import fetchPosts, { POST_ADDED } from './posts';
 import commentsAction, { COMMENTS_ADDED } from './comments';
 
-export const actions = {
+export const fetchAPIs = {
 	fetchCategories,
-	fetchPosts,
-	commentsAction
+	fetchPosts
 };
 
 export const constants = {
@@ -13,3 +12,7 @@ export const constants = {
 	COMMENTS_ADDED
 };
 
+export const actions = {
+	categoriesAction,
+	commentsAction
+};

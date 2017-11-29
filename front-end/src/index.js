@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
-import { App } from './components/';
+import { Wrapper } from './components/';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -33,7 +33,7 @@ const store = createStore(
 const router = (
 	<Provider store={store}>
 		<BrowserRouter>
-			<App/>
+			<Wrapper/>
 		</BrowserRouter>
 	</Provider>
 );
