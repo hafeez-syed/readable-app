@@ -1,10 +1,11 @@
 import React from 'react';
+import PostList from './PostList';
 
-const Category = (categories) => {
-	const allCategories = [categories.categories];
+const Category = (location) => {
+	const category = location.match.params.category;
 	return (
 		<div className="single-category">
-			i'm single category {allCategories}
+			<PostList category={category} />
 		</div>
 	)
 };

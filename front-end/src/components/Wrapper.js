@@ -6,56 +6,9 @@ import '../App.css';
 
 import CategoryList from '../components/CategoryList';
 import Inner from '../components/Inner';
-import SortList from './SortList';
 
 class Wrapper extends Component {
-    /*state = {
-        postOrder: 'asc',
-        categories: [],
-        posts: [],
-        comments: [],
-
-    };*/
-
-    /*,
-
-     fetchCategories()
-     .then((data) => {
-     console.log('data');
-     console.log(data);
-     this.setState({categories: data.categories});
-     });
-
-     fetchPosts()
-     .then((posts) => {
-     console.log('posts');
-     console.log(posts);
-     this.setState({post: posts});
-     })*/
-
-    componentDidMount() {
-        //this.props.categories();
-        //this.props.posts();
-        //debugger;
-	    /*this.setState({categories: this.props.categories()});
-        const posts = this.props.posts();*/        
-
-	    /*searchApis.fetchCategories()
-		    .then((data) => (dispatch) =>{
-			    console.log('data');
-                console.log(data);
-                dispatch(categoriesAction(data));
-			    //this.setState({categories: data});
-		    });*/
-
-	    /*searchApis.fetchPosts()
-		    .then((posts) => {
-			    console.log('posts');
-			    console.log(posts);
-			    this.setState({posts: posts});
-		    });*/
-    };
-
+	/* 	<SortList updateSort={this.updateSort} /> */
     updateSort = (type, order) => {
         console.log(type, order);
         this.setState({postOrder: order});
@@ -76,7 +29,6 @@ class Wrapper extends Component {
 
                 <Inner />
 
-                <SortList updateSort={this.updateSort} />
             </div>
     );
   }

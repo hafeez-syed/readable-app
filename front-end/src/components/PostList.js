@@ -1,36 +1,51 @@
 import React from 'react';
 import _ from 'lodash';
-import Grid from 'react-icons/lib/ti/th-small';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { actions } from '../actions/';
+import PostSingle from './PostSingle';
+import SortList from './SortList';
+import * as searchApis from '../utils/apis';
 
-const PostList = ({posts, order, type}) => {
+const PostList = ({posts, order, type, category}) => {
     const allPosts = posts;
-    const postType = type ? type : 'title';
-    const postOrder = order === 'up' ? 'asc' : 'desc';
+	const sorting = !category ? <SortList/> : '';
+	const postType = type ? type : 'title';
+	const postOrder = order === 'up' ? 'asc' : 'desc';
     return (
-        <div className='posts-wrapper'>
-            <p>I'm postList</p>
-            <ul>
-                {
-                    allPosts && allPosts.length && _.orderBy(allPosts, postType, postOrder).map((post) => (
-                        <li className='posts-list' key={post.id}>
-                            <div className='grid-logo'>
-                                <Grid size={16} />
-                            </div>
-                            <div className='category'>
-                                {_.capitalize(post.category)}
-                            </div>
-                            <div className='title'>
-                                {post.title}
-                            </div>
-                            <div className='votes'>
-                                {post.voteScore}
-                            </div>
-                        </li>
-                    ))
-                }
-            </ul>
+        <div>
+	        {sorting}
+            <div className='posts-wrapper'>
+                <ul>
+			        {
+				        allPosts && allPosts.length && _.orderBy(allPosts, postType, postOrder).map((post) => (
+                            <li className='posts-list' key={post.id}>
+                                <PostSingle post={post}/>
+                            </li>
+				        ))
+			        }
+                </ul>
+            </div>
         </div>
     )
 };
 
-export default PostList;
+const mapDispatchToProps = (dispatch, location) => {
+	const category = location.match.params.category;
+	const api = !category ? searchApis.fetchPosts : searchApis.fetchPostsByCategory;
+
+	return {
+		getPosts: (() => {
+			return api(category)
+				.then((data) => dispatch(actions.postsAction(data)));
+		})()
+	}
+};
+
+const mapStateToProps = ({ posts }) => {
+	return {
+		posts
+	}
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostList));

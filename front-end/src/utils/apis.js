@@ -18,7 +18,13 @@ const fetchCategories = () => {
 const fetchPosts = () => {
     return fetch(`${URL}/posts`, HEADERS)
         .then(res => res.json())
-	    .then(data => data.posts);
+	    .then(data => data);
+};
+
+const fetchPostsByCategory = (category) => {
+    return fetch(`${URL}/${category}/posts`, HEADERS)
+        .then(res => res.json())
+	    .then(data => data);
 };
 
 const fetchComments = () => {
@@ -29,5 +35,6 @@ const fetchComments = () => {
 export {
     fetchCategories,
     fetchPosts,
+	fetchPostsByCategory,
     fetchComments
 }

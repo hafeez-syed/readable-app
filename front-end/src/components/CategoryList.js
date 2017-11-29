@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { actions } from '../actions/';
 import * as searchApis from '../utils/apis';
 
-const CategoryList = ({getCategories, categories}) => (
+const CategoryList = ({categories}) => (
     <div className='categories-wrapper'>
         <h2>Categories</h2>
         <ul>
@@ -21,8 +21,7 @@ const CategoryList = ({getCategories, categories}) => (
             }
         </ul>
     </div>
-)    
-
+);
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -37,6 +36,6 @@ const mapStateToProps = ({ categories }) => {
     return {
         categories 
     }
-}
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoryList));

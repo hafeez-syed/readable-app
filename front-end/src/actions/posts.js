@@ -2,13 +2,13 @@ import * as searchApis from '../utils/apis';
 
 export const POST_ADDED = 'POST_ADDED';
 
-export const fetchPosts = () => (dispatch) => {
+export const fetchPosts = () => {
 	searchApis.fetchPosts()
-		.then(posts => dispatch(postsAction(posts)));
+		.then((data) => {return data});
 };
 
 
-const postsAction = (posts) => {
+export const postsAction = (posts) => {
     return {
         type: POST_ADDED,
 	    posts
