@@ -1,9 +1,8 @@
-import { POST_ADDED, POST_SORTED } from '../actions/posts';
+import { POST_LOADED, POST_ADDED, POST_SORTED } from '../actions/posts';
 const posts = (state = [], action) => {
 	switch(action.type) {
-		case POST_ADDED:
+		case POST_LOADED:
 			return [
-				...state,
 				...action.posts
 			];
 		case POST_SORTED:

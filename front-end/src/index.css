@@ -112,3 +112,114 @@ header a:hover {
   transform: scaleY(-1);
   vertical-align: -webkit-baseline-middle !important;  
 }
+
+.todos .todo__form {
+  border: 0;
+}
+
+.todo__form input.new-todo {
+  border: 0;
+  margin-left: 20px;
+  width: 95%
+}
+
+.todo__form {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.todo__form input {
+  border: 1px solid #eee;
+  padding: 15px 10px;
+  width: 100%;
+  outline: 0;
+  font-size: 16px;
+}
+
+.todo__list {
+  border-top: 1px solid #e6ebed;
+  }
+  .todo__list:before {
+    content: '';
+    width: 3px;
+    z-index: 2;
+    border: 1px solid #f2e3df;
+    border-width: 0 1px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 35px;
+  }
+  
+  .todo__list li {
+    position: relative;
+    padding: 0 15px 0 50px;
+    line-height: 21px;
+    font-size: 12px;
+    color: #8b8f97;
+    border-bottom: 1px solid #e6ebed;
+  }
+  .todo__list li:hover a {
+    opacity: 1;
+  }
+  .todo__list li a {
+    text-decoration: none;
+    color: #6bb3ca;
+    font-size: 22px;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+  }
+  .todo__list li p,
+  .todo__list li input {
+    line-height: 40px;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    width: 100%;
+  }
+
+  .todo__list .toggle {
+    display: block;
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    text-indent: 100%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .todo__list .toggle:before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background: #faf9f9;
+    border: 1px solid #6bb3ca;
+    border-radius: 2px;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    -webkit-box-shadow: 0 1px 1px #dfecf4;
+    -moz-box-shadow: 0 1px 1px #dfecf4;
+    box-shadow: 0 1px 1px #dfecf4;
+  }
+
+  .todo__list .toggle:hover:before {
+    -webkit-box-shadow: 0 0 3px #6bb3ca;
+    -moz-box-shadow: 0 0 3px #6bb3ca;
+    box-shadow: 0 0 3px #6bb3ca;
+  }
+
+  .todo__list .done .toggle:before, .todo__list .toggle:active:before {
+    border-color: #c0c0c0 #ccc #d8d8d8;
+    -webkit-box-shadow: inset 0 1px rgba(0, 0, 0, 0.05), inset 0 5px 5px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px rgba(0, 0, 0, 0.05), inset 0 5px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.05), inset 0 5px 5px rgba(0, 0, 0, 0.05);
+  }
+  

@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch, location) => {
 	return {
 		getPosts: (() => {
 			return api(category)
-				.then((data) => dispatch(actions.postsAddedAction(data)));
+				.then((data) => dispatch(actions.postsLoadedAction(data)));
 		})(),
 		updateSort: (posts, type, order) => {
 			order = (order === 'up') ? 'asc' : 'desc';
