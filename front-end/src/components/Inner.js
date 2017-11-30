@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Switch, Route} from 'react-router-dom';
 
 import { Category, PostList, PostNew } from './';
 
 class Inner extends Component {
 	render() {
+		const { categories } = this.props;
 		return (
 			<div className="inner-content">
 				<Switch>
@@ -20,6 +23,7 @@ class Inner extends Component {
 					<Route
 						path="/post/new"
 						component={PostNew}
+					    categories={categories}
 					/>
 			</Switch>
 			</div>
@@ -27,6 +31,10 @@ class Inner extends Component {
 	}
 }
 
+const mapStateToProps = ({ categories }) => {
+	return {
+		categories
+	}
+};
 
-
-export default Inner;
+export default withRouter(connect(mapStateToProps)(Inner));

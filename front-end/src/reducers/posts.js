@@ -9,6 +9,12 @@ const posts = (state = [], action) => {
 			return [
 				...action.posts
 			];
+		case POST_ADDED:
+			debugger;
+			return [
+				...state,
+				{...action.posts}
+			];
 		default:
 			return state;
 	}

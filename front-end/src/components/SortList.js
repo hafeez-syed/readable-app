@@ -2,27 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {TiThumbsUp, TiThumbsDown, TiTime, TiDocumentAdd} from 'react-icons/lib/ti';
 
-const SortList = (sortPost) => {
-    const updateSort = sortPost.updateSort;
-    const posts = sortPost.posts;
-    return (
+const SortList = (props) => {
+    const updateSort = props.updateSort;
+    const posts = props.posts;
+	return (
         <div className='sorting-wrapper'>
-            <h2>Sort</h2>
             <div className='sort-list'>
-                <div className='sorting-logo' title='Sort by vote'>
-                    <a onClick={() => updateSort(posts, 'voteScore', 'up')}><TiThumbsUp size={60} /></a>
-                    <a onClick={() => updateSort(posts, 'voteScore', 'down')}><TiThumbsDown size={60} /></a>
+                <h4>Sort by votes</h4>
+                <div className='sorting-logo'>
+                    <a title="ASC" onClick={() => updateSort(posts, 'voteScore', 'up')}><TiThumbsUp size={60} /></a>
+                    <a title="DESC" onClick={() => updateSort(posts, 'voteScore', 'down')}><TiThumbsDown size={60} /></a>
                 </div>
-                <div className='sorting-logo' title='Sort by time'>
-                    <a onClick={() => updateSort(posts, 'timestamp', 'up')}><TiTime size={60} /></a>
-                    <a onClick={() => updateSort(posts, 'timestamp', 'down')}><TiTime className="flip-vertical" size={60} /></a>
+                <h4>Sort by time</h4>
+                <div className='sorting-logo'>
+                    <a title="ASC" onClick={() => updateSort(posts, 'timestamp', 'up')}><TiTime size={60} /></a>
+                    <a title="DESC" onClick={() => updateSort(posts, 'timestamp', 'down')}><TiTime className="flip-vertical" size={60} /></a>
                 </div>
             </div>
 
             <p>&nbsp;</p>
 
-            <h2>Post</h2>
             <div className='sort-list'>
+                <h4>Add new post</h4>
                 <div className='sorting-logo' title='Add new post'>
                     <Link to="/post/new">
                         <TiDocumentAdd size={60} />

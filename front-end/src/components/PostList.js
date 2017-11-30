@@ -15,8 +15,8 @@ const PostList = ({posts, category, updateSort}) => {
             <div className='posts-wrapper'>
                 <ul>
 			        {
-				        posts && posts.length && posts.map((post) => (
-                            <li className='posts-list' key={post.id}>
+				        posts && posts.length && posts.map((post, ind) => (
+                            <li className='posts-list' key={ind}>
                                 <PostSingle post={post}/>
                             </li>
 				        ))
@@ -45,6 +45,7 @@ const mapDispatchToProps = (dispatch, location) => {
 };
 
 const mapStateToProps = ({ posts }) => {
+	debugger;
 	return {
 		posts
 	}
