@@ -1,18 +1,16 @@
-import * as searchApis from '../utils/apis';
-
 export const POST_ADDED = 'POST_ADDED';
+export const POST_SORTED = 'POST_SORTED';
 
-export const fetchPosts = () => {
-	searchApis.fetchPosts()
-		.then((data) => {return data});
-};
-
-
-export const postsAction = (posts) => {
+export const postsAddedAction = (posts) => {
     return {
         type: POST_ADDED,
 	    posts
     };
 };
 
-export default fetchPosts;
+export const postsSortedAction = (posts) => {
+    return {
+        type: POST_SORTED,
+	    posts
+    };
+};

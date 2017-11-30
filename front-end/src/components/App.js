@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
         categories: state.categories,
         posts: state.posts,
         comments: state.comments,
-    }
+        sorting: state.sorting
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,22 +1,21 @@
 import React from 'react';
-import {TiThumbsUp, TiArrowSortedDown, TiArrowSortedUp, TiTime, TiDocumentAdd} from 'react-icons/lib/ti';
+import { Link } from 'react-router-dom';
+import {TiThumbsUp, TiThumbsDown, TiTime, TiDocumentAdd} from 'react-icons/lib/ti';
 
 const SortList = (sortPost) => {
-    console.log(sortPost);
     const updateSort = sortPost.updateSort;
+    const posts = sortPost.posts;
     return (
         <div className='sorting-wrapper'>
             <h2>Sort</h2>
             <div className='sort-list'>
                 <div className='sorting-logo' title='Sort by vote'>
-                    <TiThumbsUp size={60} />
-                    <a onClick={() => updateSort('voteScore', 'up')}><TiArrowSortedUp size={30} /></a>
-                    <a onClick={() => updateSort('voteScore', 'down')}><TiArrowSortedDown size={30} /></a>
+                    <a onClick={() => updateSort(posts, 'voteScore', 'up')}><TiThumbsUp size={60} /></a>
+                    <a onClick={() => updateSort(posts, 'voteScore', 'down')}><TiThumbsDown size={60} /></a>
                 </div>
                 <div className='sorting-logo' title='Sort by time'>
-                    <TiTime size={60} />
-                    <a onClick={() => updateSort('timestamp', 'up')}><TiArrowSortedUp size={30} /></a>
-                    <a onClick={() => updateSort('timestamp', 'down')}><TiArrowSortedDown size={30} /></a>
+                    <a onClick={() => updateSort(posts, 'timestamp', 'up')}><TiTime size={60} /></a>
+                    <a onClick={() => updateSort(posts, 'timestamp', 'down')}><TiTime className="flip-vertical" size={60} /></a>
                 </div>
             </div>
 
@@ -25,7 +24,9 @@ const SortList = (sortPost) => {
             <h2>Post</h2>
             <div className='sort-list'>
                 <div className='sorting-logo' title='Add new post'>
-                    <TiDocumentAdd size={60} />
+                    <Link to="/post/new">
+                        <TiDocumentAdd size={60} />
+                    </Link>
                 </div>
             </div>
         </div>

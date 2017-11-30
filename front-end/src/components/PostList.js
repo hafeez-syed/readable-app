@@ -7,18 +7,15 @@ import PostSingle from './PostSingle';
 import SortList from './SortList';
 import * as searchApis from '../utils/apis';
 
-const PostList = ({posts, order, type, category}) => {
-    const allPosts = posts;
-	const sorting = !category ? <SortList/> : '';
-	const postType = type ? type : 'title';
-	const postOrder = order === 'up' ? 'asc' : 'desc';
+const PostList = ({posts, category, updateSort}) => {
+	const sorting = !category ? <SortList posts={posts} updateSort={updateSort}/> : '';
     return (
         <div>
 	        {sorting}
             <div className='posts-wrapper'>
                 <ul>
 			        {
-				        allPosts && allPosts.length && _.orderBy(allPosts, postType, postOrder).map((post) => (
+				        posts && posts.length && posts.map((post) => (
                             <li className='posts-list' key={post.id}>
                                 <PostSingle post={post}/>
                             </li>
@@ -37,8 +34,13 @@ const mapDispatchToProps = (dispatch, location) => {
 	return {
 		getPosts: (() => {
 			return api(category)
-				.then((data) => dispatch(actions.postsAction(data)));
-		})()
+				.then((data) => dispatch(actions.postsAddedAction(data)));
+		})(),
+		updateSort: (posts, type, order) => {
+			order = (order === 'up') ? 'asc' : 'desc';
+			posts = _.orderBy(posts, type, order);
+			dispatch(actions.postsSortedAction(posts))
+		}
 	}
 };
 

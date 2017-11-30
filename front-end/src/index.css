@@ -23,14 +23,17 @@ li {
   display: flow-root;
   float: left;
   justify-content: space-around;
-  margin: 10px 20px;
+  margin: 10px 0;
 }
 
 .categories-list {
   font-weight: bold;
   margin-bottom: 20px;
   text-align: left;
-  text-decoration: underline;
+}
+
+li.categories-list {
+  border-bottom: 1px solid #eee;
 }
 
 .posts-list, .sorting-wrapper {
@@ -56,6 +59,11 @@ li {
 
 .sorting-logo {
   color: #02b3e4;
+  cursor: pointer;
+}
+
+.sorting-logo a:hover {
+  color: #666;
 }
 
 .posts-list .category {
@@ -81,6 +89,11 @@ li {
   text-align: right;
 }
 
+a {
+  color: #02b3e4;
+  text-decoration: none;  
+}
+
 header a {
   color: #fff;
   text-decoration: none;
@@ -88,4 +101,14 @@ header a {
 
 header a:hover {
   color: #02b3e4;
+}
+
+.link-inactive {
+  color: #000;
+}
+
+.flip-vertical {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  vertical-align: -webkit-baseline-middle !important;  
 }

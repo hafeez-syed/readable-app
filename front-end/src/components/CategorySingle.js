@@ -1,7 +1,7 @@
 import React from 'react';
 import PostList from './PostList';
 
-const Category = (location) => {
+const CategorySingle = (location) => {
 	const category = location.match.params.category;
 	return (
 		<div className="single-category">
@@ -10,4 +10,4 @@ const Category = (location) => {
 	)
 };
 
-export default Category;
+export default CategorySingle;

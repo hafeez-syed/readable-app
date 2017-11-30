@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route} from 'react-router-dom';
 
-import PostList from './PostList';
-import { Category } from './';
+import { Category, PostList, PostNew } from './';
 
 class Inner extends Component {
 	render() {
@@ -18,7 +17,11 @@ class Inner extends Component {
 						path="/categories/:category"
 					    component={Category}
 					/>
-				</Switch>
+					<Route
+						path="/post/new"
+						component={PostNew}
+					/>
+			</Switch>
 			</div>
 		)
 	}

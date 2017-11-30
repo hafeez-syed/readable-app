@@ -6,22 +6,29 @@ import { withRouter } from 'react-router-dom';
 import { actions } from '../actions/';
 import * as searchApis from '../utils/apis';
 
-const CategoryList = ({categories}) => (
-    <div className='categories-wrapper'>
-        <h2>Categories</h2>
-        <ul>
-            {
-            categories.map((cat, ind) => (
-                    <li className='categories-list' key={ind}>
-                        <Link to={`/categories/${cat.name}`} >
-                            {_.capitalize(cat.name)}
-                        </Link>
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
-);
+const CategoryList = ({categories, location}) => {
+    const pathName = location.pathname;
+    return (
+        <div className='categories-wrapper'>
+            <h3>Categories</h3>
+            <ul>
+                {
+                categories.map((cat, ind) => (
+                        <li className='categories-list' key={ind}>
+                            {pathName === `/categories/${cat.name}` ?
+                                _.capitalize(cat.name)
+                                :                        
+                                <Link to={`/categories/${cat.name}`} >
+                                    {_.capitalize(cat.name)}
+                                </Link>
+                            }
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    )
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {

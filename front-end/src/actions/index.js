@@ -1,14 +1,10 @@
-import fetchCategories, { categoriesAction } from './categories';
-import fetchPosts, { postsAction } from './posts';
+import { categoriesAction } from './categories';
+import { postsAddedAction, postsSortedAction } from './posts';
 import commentsAction from './comments';
-
-export const fetchAPIs = {
-	fetchCategories,
-	fetchPosts
-};
 
 export const actions = {
 	categoriesAction,
-	postsAction,
+	postsAddedAction,
+	postsSortedAction,
 	commentsAction
 };

@@ -4,6 +4,7 @@ import MdLibraryBooks from 'react-icons/lib/md/library-books';
 
 import '../App.css';
 
+import Home from '../components/Home';
 import CategoryList from '../components/CategoryList';
 import Inner from '../components/Inner';
 
@@ -17,13 +18,14 @@ class Wrapper extends Component {
     render() {
         return (
             <div className="container">
-
                 <header className="App-header">
                     <Link to="/">
                         <MdLibraryBooks size={60} />
                         <h1 className="App-title">Readable</h1>
                     </Link>
                 </header>
+
+                <Home />
 
                 <CategoryList />
 
