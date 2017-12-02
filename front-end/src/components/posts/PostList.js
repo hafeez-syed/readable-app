@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { actions } from '../actions/';
+import { actions } from '../../actions/index';
 import PostSingle from './PostSingle';
-import SortList from './SortList';
-import * as searchApis from '../utils/apis';
+import SortList from '../SortList';
+import * as searchApis from '../../utils/apis';
 
 class PostList extends Component {
-	/*componentWillMount() {
-		debugger;
-		if(this.props.posts && !this.props.posts.length && this.props.location.pathname === '/') {
-			this.props.getPosts();
-		}
-	}*/
 	render() {
 		const {posts, category, updateSort} = this.props;
 		const sorting = !category ? <SortList posts={posts} updateSort={updateSort}/> : '';
@@ -45,10 +39,6 @@ const mapDispatchToProps = (dispatch, location) => {
 			return api(category)
 				.then((data) => dispatch(actions.postsLoadedAction(data)));
 		})(),
-		getPostsByCategory: () => {
-			return searchApis.fetchPostsByCategory(category)
-				.then((data) => dispatch(actions.postsLoadedAction(data)));
-		},
 		updateSort: (posts, type, order) => {
 			order = (order === 'up') ? 'asc' : 'desc';
 			posts = _.orderBy(posts, type, order);

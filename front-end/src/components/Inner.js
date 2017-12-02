@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Switch, Route} from 'react-router-dom';
 
-import { Category, PostList, PostNew } from './';
+import { Category, PostList, PostNew, PostDetail } from './';
 
 class Inner extends Component {
 	render() {
@@ -23,6 +23,11 @@ class Inner extends Component {
 					<Route
 						path="/post/new"
 						component={PostNew}
+					    categories={categories}
+					/>
+					<Route
+						path="/post/:postId"
+						component={PostDetail}
 					    categories={categories}
 					/>
 			</Switch>

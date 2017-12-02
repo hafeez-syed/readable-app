@@ -1,4 +1,4 @@
-import { POST_LOADED, POST_ADDED, POST_SORTED } from '../actions/posts';
+import { POST_LOADED, POST_ADDED, POST_SORTED, POST_FOUND } from '../actions/posts';
 const posts = (state = [], action) => {
 	switch(action.type) {
 		case POST_LOADED:
@@ -13,6 +13,12 @@ const posts = (state = [], action) => {
 			return [
 				...state,
 				{...action.posts}
+			];
+		case POST_FOUND:
+			return [
+				...state.filter((post) => {
+					return post.id === action.postId
+				})
 			];
 		default:
 			return state;

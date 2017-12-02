@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import v1 from 'uuid/v1';
-import * as searchApis from '../utils/apis';
-import { actions } from '../actions/';
+import * as searchApis from '../../utils/apis';
+import { actions } from '../../actions/index';
 
 class PostNew extends Component {
 	state = {

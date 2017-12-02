@@ -3,8 +3,8 @@ import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { actions } from '../actions/';
-import * as searchApis from '../utils/apis';
+import { actions } from '../../actions/index';
+import * as searchApis from '../../utils/apis';
 
 const CategoryList = ({categories, location}) => {
     const pathName = location.pathname;

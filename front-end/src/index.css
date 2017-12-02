@@ -53,8 +53,8 @@ li.categories-list {
 }
 
 .posts-list .grid-logo {
-  color: #999;
-  text-align: right;
+  color: #555;
+  margin-bottom: 20px;
 }
 
 .sorting-logo {
@@ -67,7 +67,7 @@ li.categories-list {
 }
 
 .posts-list .category {
-  color: #999;
+  color: #000;
   display: block;
   font-size: 0.8rem;
   margin-bottom: 5px;
@@ -84,9 +84,23 @@ li.categories-list {
 
 .posts-list .votes {
   color: #666;
+  display: inline-grid;
+  float: right;
   font-size: 0.9rem;
   font-weight: bold;
-  text-align: right;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.posts-list .date-time {
+  color: #999;
+  font-size: 0.7rem;
+}
+
+
+li.posts-list {
+  overflow: auto;
+  width: 650px;
 }
 
 a {
@@ -255,4 +269,18 @@ textarea {
 
 .position-default {
   position: static;
+}
+
+.icon-heart {
+  color: #ff0000;
+}
+
+.icon-comment {
+  color: #3e3e3e;
+}
+
+.title-heading {
+  color: #02B3E6;
+  font-size: 24px;
+  margin-left: 3.5rem;
 }
