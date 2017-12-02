@@ -32,7 +32,7 @@ class PostNew extends Component {
 		};
 
 		return (
-			<div className="post-new">
+			<div className="post-new sorting-wrapper position-default">
 				<form className="todo__form" onSubmit={onSubmitHandler}>
 					<h3>Add new post</h3>
 
@@ -70,7 +70,6 @@ const mapDispatchToProps = (dispatch) => {
 
 			return api(formData)
 				.then(function(data) {
-					debugger;
 					dispatch(actions.postsAddedAction(
 						{
 							...formData,

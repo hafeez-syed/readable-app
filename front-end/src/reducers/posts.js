@@ -10,7 +10,6 @@ const posts = (state = [], action) => {
 				...action.posts
 			];
 		case POST_ADDED:
-			debugger;
 			return [
 				...state,
 				{...action.posts}

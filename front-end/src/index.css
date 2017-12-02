@@ -252,3 +252,7 @@ textarea {
   height: 150px;
   width: 94%;
 }
+
+.position-default {
+  position: static;
+}
