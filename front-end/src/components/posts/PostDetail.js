@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from '../../actions/';
+import CommentsForm from '../comments/CommentsForm';
 import _ from 'lodash';
 import Moment from 'react-moment';
-import {TiHeart} from 'react-icons/lib/ti/';
+import {TiHeart, TiTrash, TiEdit} from 'react-icons/lib/ti/';
 import {FaComments} from 'react-icons/lib/fa/';
 
 class PostDetail extends Component {
@@ -12,11 +13,9 @@ class PostDetail extends Component {
 	    const props = this.props;
 	    const postId = this.props.match.params.postId;
 	    let post = {};
-	    let title = '';
-	    let category = '';
-	    let body = '';
-	    let author = '';
-	    let time = '';
+	    const onSubmitHandler = () => {
+
+	    };
 
 	    if(this.props.posts.length) {
 	        if(this.props.posts.length !== 1) {
@@ -31,29 +30,40 @@ class PostDetail extends Component {
                 <h3 className="title-heading">{post.title}</h3>
                 <div className="post-new sorting-wrapper position-default">
                     <div className='single-post'>
-                        <div className='category'>
-                            <label>Category</label>
-					        {_.capitalize(post.category)}
+                        <div className='category line-items'>
+                            <label>Category:</label>
+	                        <span>
+						        {_.capitalize(post.category)}
+	                        </span>
                         </div>
-                        <div className='date-time'>
-                            <label>Time</label>
+                        <div className='date-time line-items'>
+                            <label>Time:</label>
                             <Moment format="MMMM Do YYYY, h:mm:ss a">
-						        {post.timestamp}
+						        <span>{post.timestamp}</span>
                             </Moment>
                         </div>
-                        <div className='votes'>
+                        <div className='votes line-items'>
                             <label>Votes</label>
                             <TiHeart className="icon-heart" size={30} />
 					        {post.voteScore}
                         </div>
-                        <div className='votes'>
+                        <div className='votes line-items'>
                             <label>Comments</label>
                             <FaComments className="icon-comment" size={30} />
 					        {post.voteScore}
                         </div>
+	                    <div className="post-controls">
+		                    <TiEdit size={60} />
+		                    Edit
+		                    <TiTrash size={60} />
+		                    Delete
+	                    </div>
                     </div>
                 </div>
-            </div>
+
+		        <CommentsForm onSubmitHandler={onSubmitHandler} />
+
+	        </div>
 	    )
     }
 };

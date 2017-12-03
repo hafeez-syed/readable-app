@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import MdLibraryBooks from 'react-icons/lib/md/library-books';
+import { connect } from 'react-redux';
+import { actions } from '../actions/index';
+import * as searchApis from '../utils/apis';
 
 import '../App.css';
 
@@ -9,13 +12,12 @@ import CategoryList from './categories/CategoryList';
 import Inner from '../components/Inner';
 
 class Wrapper extends Component {
-	/* 	<SortList updateSort={this.updateSort} /> */
-    updateSort = (type, order) => {
-        console.log(type, order);
-        this.setState({postOrder: order});
-    };
-
-    render() {
+	componentWillMount() {
+	    this.props.getAllCategories();
+	    this.props.getAllPosts();
+	}
+	render() {
+	    const {categories, posts, comments} = this.props;
         return (
             <div className="container">
                 <header className="App-header">
@@ -27,12 +29,42 @@ class Wrapper extends Component {
 
                 <Home />
 
-                <CategoryList />
+                <CategoryList categories={categories} />
 
-                <Inner />
+                <Inner posts={posts} comments={comments} />
 
             </div>
     );
   }
 }
-export default Wrapper;
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getAllCategories: () => {
+			return searchApis.fetchCategories()
+				.then((data) => dispatch(actions.categoriesAction(data)));
+		},
+		getAllPosts: () => {
+			return searchApis.fetchPosts()
+				.then(function(data) {
+				    dispatch(actions.postsLoadedAction(data));
+				    data.map( ({id}) => {
+				        return searchApis.fetchCommentsById(id)
+                            .then(function(comment) {
+	                            dispatch(actions.commentsAction(comment));
+                            })
+				    });
+				});
+		}
+	}
+};
+
+const mapStateToProps = ({ categories, posts, comments }) => {
+	return {
+		categories,
+		posts,
+        comments
+	}
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Wrapper));

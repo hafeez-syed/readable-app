@@ -1,9 +1,9 @@
-export const COMMENTS_ADDED = 'COMMENTS_ADDED';
+export const COMMENTS_LOADED = 'COMMENTS_LOADED';
 
-const commentsAction = (index) => {
+const commentsAction = (comments) => {
     return {
-        type: COMMENTS_ADDED,
-        index
+        type: COMMENTS_LOADED,
+        comments
     };
 };
 

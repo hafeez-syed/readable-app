@@ -46,15 +46,19 @@ const fetchPostsByCategory = (category) => {
 	    .then(data => data);
 };
 
-const fetchComments = () => {
-    return fetch(`${URL}/categories`)
+const fetchCommentsById = (commentId) => {
+    return fetch(`${URL}/posts/${commentId}/comments`, {
+	    method: 'GET',
+	    headers: HEADERS
+    })
         .then((res) => res.json())
+        .then(data => data)
 };
 
 export {
     fetchCategories,
     fetchPosts,
 	fetchPostsByCategory,
-    fetchComments,
+	fetchCommentsById,
 	addPost
 }

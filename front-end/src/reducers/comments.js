@@ -1,8 +1,11 @@
-import COMMENTS_ADDED from '../actions/comments';
+import { COMMENTS_LOADED } from '../actions/comments';
 const comments = (state = [], action) => {
 	switch(action.type) {
-		case COMMENTS_ADDED:
-			return action.comments;
+		case COMMENTS_LOADED:
+			return [
+				...state,
+				...action.comments
+			];
 		default:
 			return state;
 	}

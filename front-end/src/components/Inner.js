@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Switch, Route} from 'react-router-dom';
-
 import { Category, PostList, PostNew, PostDetail } from './';
 
 class Inner extends Component {
+	componentWillMount() {
+		//debugger;
+	}
+	componentDidMount() {
+		//debugger;
+	}
+
 	render() {
 		const { categories } = this.props;
 		return (
@@ -30,7 +36,7 @@ class Inner extends Component {
 						component={PostDetail}
 					    categories={categories}
 					/>
-			</Switch>
+				</Switch>
 			</div>
 		)
 	}

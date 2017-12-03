@@ -284,3 +284,27 @@ textarea {
   font-size: 24px;
   margin-left: 3.5rem;
 }
+
+.line-items {
+  border: 1px solid #eee;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.line-items label {
+  float: left;
+  width: 100px;
+}
+
+.line-items span, .line-items time {
+  color: #02b3e4;
+}
+
+.post-controls {
+  color: #666;
+  float: right;
+}
+
+.post-new {
+  overflow: auto;
+}

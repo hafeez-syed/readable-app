@@ -2,6 +2,7 @@ export const POST_ADDED = 'POST_ADDED';
 export const POST_LOADED = 'POST_LOADED';
 export const POST_SORTED = 'POST_SORTED';
 export const POST_FOUND = 'POST_FOUND';
+export const POST_FOUND_BY_CATEGORY = 'POST_FOUND_BY_CATEGORY';
 
 export const postsLoadedAction = (posts) => {
     return {
@@ -25,10 +26,16 @@ export const postsSortedAction = (posts) => {
     };
 };
 
-
 export const postsSingleAction = (postId) => {
 	return {
 		type: POST_FOUND,
 		postId
+	};
+};
+
+export const postsByCategoryAction = (category) => {
+	return {
+		type: POST_FOUND_BY_CATEGORY,
+		category
 	};
 };

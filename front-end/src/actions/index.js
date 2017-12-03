@@ -1,5 +1,5 @@
 import { categoriesAction } from './categories';
-import { postsLoadedAction, postsAddedAction, postsSortedAction, postsSingleAction } from './posts';
+import { postsLoadedAction, postsAddedAction, postsSortedAction, postsSingleAction, postsByCategoryAction } from './posts';
 import commentsAction from './comments';
 
 export const actions = {
@@ -8,5 +8,6 @@ export const actions = {
 	postsAddedAction,
 	postsSortedAction,
 	postsSingleAction,
+	postsByCategoryAction,
 	commentsAction
 };

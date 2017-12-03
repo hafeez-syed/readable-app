@@ -1,19 +1,8 @@
-import * as searchApis from '../utils/apis';
-
-export const CATEGORY_ALL_SUCCESS = 'CATEGORY_ALL_SUCCESS';
-export const CATEGORY_SINGLE_SUCCESS = 'CATEGORY_SINGLE_SUCCESS';
-
-export const fetchCategories = () => {
-    searchApis.fetchCategories()
-        .then((data) => {return data});
-};
-    
+export const CATEGORY_LOADED = 'CATEGORY_LOADED';
 
 export const categoriesAction = (categories) => {
     return {
-        type: CATEGORY_ALL_SUCCESS,
+        type: CATEGORY_LOADED,
 	    categories
     };
 };
-
-export default fetchCategories;

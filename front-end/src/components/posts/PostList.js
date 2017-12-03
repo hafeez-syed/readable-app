@@ -5,12 +5,32 @@ import { withRouter } from 'react-router-dom';
 import { actions } from '../../actions/index';
 import PostSingle from './PostSingle';
 import SortList from '../SortList';
-import * as searchApis from '../../utils/apis';
 
 class PostList extends Component {
+	state = {
+		currentCategory: ''
+	};
+	setCurrentCategory(category) {
+		this.setState({currentCategory: category});
+	}
+	getCurrentCategory() {
+		return this.state.currentCategory;
+	}
+	getComments(postId) {
+		return this.props.comments.filter((comment) => comment.parentId === postId);
+	}
 	render() {
-		const {posts, category, updateSort} = this.props;
+		let {posts, category, updateSort} = this.props;
 		const sorting = !category ? <SortList posts={posts} updateSort={updateSort}/> : '';
+		if(category && this.getCurrentCategory() !== category) {
+			posts = posts.filter(function(post) {
+				debugger;
+				return post.category === category;
+			});
+			this.setCurrentCategory(category);
+			//this.props.getPostsByCategory(category);
+		}
+		debugger;
 		return (
 			<div>
 				{sorting}
@@ -19,7 +39,7 @@ class PostList extends Component {
 						{
 							posts && posts.length && posts.map((post, ind) => (
 								<li className='posts-list' key={ind}>
-									<PostSingle post={post}/>
+									<PostSingle post={post} comments={this.getComments(post.id)} />
 								</li>
 							))
 						}
@@ -31,14 +51,10 @@ class PostList extends Component {
 }
 
 const mapDispatchToProps = (dispatch, location) => {
-	const category = location.match.params.category;
-	const api = !category ? searchApis.fetchPosts : searchApis.fetchPostsByCategory;
-
 	return {
-		getAllPosts: (() => {
-			return api(category)
-				.then((data) => dispatch(actions.postsLoadedAction(data)));
-		})(),
+		/*getPostsByCategory: (category) => {
+			dispatch(actions.postsByCategoryAction(category))
+		},*/
 		updateSort: (posts, type, order) => {
 			order = (order === 'up') ? 'asc' : 'desc';
 			posts = _.orderBy(posts, type, order);
@@ -47,9 +63,10 @@ const mapDispatchToProps = (dispatch, location) => {
 	}
 };
 
-const mapStateToProps = ({ posts }) => {
+const mapStateToProps = ({ posts, comments }) => {
 	return {
-		posts
+		posts,
+		comments
 	}
 };
 
