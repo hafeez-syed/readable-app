@@ -22,7 +22,7 @@ const posts = (state = [], action) => {
 			];
 		case POST_FOUND_BY_CATEGORY:
 			return [
-				...state.filter((post) => {
+				state.filter((post) => {
 					return post.category === action.category
 				})
 			];

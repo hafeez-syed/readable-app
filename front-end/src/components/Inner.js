@@ -5,15 +5,8 @@ import { Switch, Route} from 'react-router-dom';
 import { Category, PostList, PostNew, PostDetail } from './';
 
 class Inner extends Component {
-	componentWillMount() {
-		//debugger;
-	}
-	componentDidMount() {
-		//debugger;
-	}
-
 	render() {
-		const { categories } = this.props;
+		const { categories, posts } = this.props;
 		return (
 			<div className="inner-content">
 				<Switch>
@@ -34,7 +27,7 @@ class Inner extends Component {
 					<Route
 						path="/post/:postId"
 						component={PostDetail}
-					    categories={categories}
+					    posts={posts}
 					/>
 				</Switch>
 			</div>
@@ -42,9 +35,10 @@ class Inner extends Component {
 	}
 }
 
-const mapStateToProps = ({ categories }) => {
+const mapStateToProps = ({ categories, posts }) => {
 	return {
-		categories
+		categories,
+		posts
 	}
 };
 

@@ -17,7 +17,7 @@ class Wrapper extends Component {
 	    this.props.getAllPosts();
 	}
 	render() {
-	    const {categories, posts, comments} = this.props;
+	    const {categories, comments} = this.props;
         return (
             <div className="container">
                 <header className="App-header">
@@ -31,7 +31,7 @@ class Wrapper extends Component {
 
                 <CategoryList categories={categories} />
 
-                <Inner posts={posts} comments={comments} />
+                <Inner comments={comments} />
 
             </div>
     );

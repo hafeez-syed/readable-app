@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actions } from '../../actions/';
 import CommentsForm from '../comments/CommentsForm';
+import CommentsList from '../comments/CommentsList';
 import _ from 'lodash';
 import Moment from 'react-moment';
 import {TiHeart, TiTrash, TiEdit} from 'react-icons/lib/ti/';
@@ -10,25 +10,22 @@ import {FaComments} from 'react-icons/lib/fa/';
 
 class PostDetail extends Component {
     render() {
-	    const props = this.props;
-	    const postId = this.props.match.params.postId;
-	    let post = {};
+	    const { posts, comments, match } = this.props;
+	    const postId = match.params.postId;
 	    const onSubmitHandler = () => {
 
 	    };
+	    const post = _.head(posts.filter(function(post) {
+	    	return post.id === postId
+	    }));
+	    const postComments = comments.filter(function(comment) {
+	    	return comment.parentId === postId
+	    });
 
-	    if(this.props.posts.length) {
-	        if(this.props.posts.length !== 1) {
-		        this.props.getPostDetailFromState(postId);
-
-            } else {
-	            post = _.head(props.posts);
-            }
-        }
 	    return (
 	        <div>
                 <h3 className="title-heading">{post.title}</h3>
-                <div className="post-new sorting-wrapper position-default">
+                <div className="sorting-wrapper overflow-auto position-default">
                     <div className='single-post'>
                         <div className='category line-items'>
                             <label>Category:</label>
@@ -50,7 +47,7 @@ class PostDetail extends Component {
                         <div className='votes line-items'>
                             <label>Comments</label>
                             <FaComments className="icon-comment" size={30} />
-					        {post.voteScore}
+					        {postComments.length}
                         </div>
 	                    <div className="post-controls">
 		                    <TiEdit size={60} />
@@ -63,23 +60,26 @@ class PostDetail extends Component {
 
 		        <CommentsForm onSubmitHandler={onSubmitHandler} />
 
+		        <CommentsList comments={postComments}  />
+
 	        </div>
 	    )
     }
-};
+}
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
     return {
 	    getPostDetailFromState: (postId) => {
 	        dispatch(actions.postsSingleAction(postId));
         }
     }
 };
-
-const mapStateToProps = ({posts}) => {
+*/
+const mapStateToProps = ({ posts, comments}) => {
     return {
-        posts
+        posts,
+	    comments
     }
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostDetail));
+export default withRouter(connect(mapStateToProps)(PostDetail));

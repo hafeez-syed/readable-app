@@ -306,5 +306,35 @@ textarea {
 }
 
 .post-new {
+  background-color: #02b3e4;
+}
+
+.overflow-auto {
   overflow: auto;
+}
+
+.single-comment {
+  background-color: #eee;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.single-comment .author, .single-comment .body {
+  color: #999;
+  font-size: 0.7rem;
+  margin-bottom: 15px;
+}
+
+.single-comment .body {
+  color: #000;
+  font-size: 1rem;
+}
+
+.comment-bubble {
+  color: #999;
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
 }

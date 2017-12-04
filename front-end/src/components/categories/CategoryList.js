@@ -1,9 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { actions } from '../../actions/index';
-import * as searchApis from '../../utils/apis';
 
 const CategoryList = ({categories, location}) => {
     const pathName = location.pathname;
@@ -28,20 +25,5 @@ const CategoryList = ({categories, location}) => {
         </div>
     )
 };
-
-/*const mapDispatchToProps = (dispatch) => {
-    return {
-        getCategories: (() => {
-            return searchApis.fetchCategories()
-                        .then((data) => dispatch(actions.categoriesAction(data)));
-        })()
-    }
-};
-
-const mapStateToProps = ({ categories }) => {
-    return {
-        categories 
-    }
-};*/
 
 export default withRouter(CategoryList);

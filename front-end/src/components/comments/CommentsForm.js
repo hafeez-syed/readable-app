@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from '../../actions/';
-import _ from 'lodash';
-import Moment from 'react-moment';
-import {TiHeart, TiTrash, TiEdit} from 'react-icons/lib/ti/';
-import {FaComments} from 'react-icons/lib/fa/';
 
 class CommentsForm extends Component {
 
