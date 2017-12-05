@@ -58,7 +58,7 @@ class PostDetail extends Component {
                     </div>
                 </div>
 
-		        <CommentsForm onSubmitHandler={onSubmitHandler} />
+		        <CommentsForm postId={postId} onSubmitHandler={onSubmitHandler} />
 
 		        <CommentsList comments={postComments}  />
 
