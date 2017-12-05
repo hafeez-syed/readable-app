@@ -1,4 +1,4 @@
-import { POST_LOADED, POST_ADDED, POST_SORTED, POST_FOUND, POST_FOUND_BY_CATEGORY } from '../actions/posts';
+import { POST_LOADED, POST_ADDED, POST_SORTED, POST_FOUND, POST_FOUND_BY_CATEGORY, POST_VOTE_UPDATED, POST_UPDATED } from '../actions/posts';
 const posts = (state = [], action) => {
 	switch(action.type) {
 		case POST_LOADED:
@@ -25,6 +25,25 @@ const posts = (state = [], action) => {
 				state.filter((post) => {
 					return post.category === action.category
 				})
+			];
+		case POST_VOTE_UPDATED:
+			state.map((post) => {
+				if (post.id === action.postId) {
+					post.voteScore = (action.postVote === 'upVote') ? post.voteScore + 1 : post.voteScore - 1;
+				}
+			});
+			return [
+				...state
+			];
+		case POST_UPDATED:
+			state.map((post) => {
+				if (post.id === action.postId) {
+					post.title = action.postTitle;
+					post.body = action.postBody;
+				}
+			});
+			return [
+				...state
 			];
 		default:
 			return state;

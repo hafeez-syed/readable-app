@@ -11,10 +11,10 @@ const CategoryList = ({categories, location}) => {
                 {
                 categories.map((cat, ind) => (
                         <li className='categories-list' key={ind}>
-                            {pathName === `/categories/${cat.name}` ?
+                            {pathName === `/${cat.name}` ?
                                 _.capitalize(cat.name)
                                 :                        
-                                <Link to={`/categories/${cat.name}`} >
+                                <Link to={`/${cat.name}`} >
                                     {_.capitalize(cat.name)}
                                 </Link>
                             }

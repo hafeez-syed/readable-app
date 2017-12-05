@@ -3,13 +3,17 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import _ from 'lodash';
+import * as searchApis from '../../utils/apis';
 import { actions } from '../../actions/';
-import {TiTimes, TiHeart, TiEdit} from 'react-icons/lib/ti/';
+import {TiTimes, TiHeart, TiEdit, TiThumbsUp, TiThumbsDown} from 'react-icons/lib/ti/';
 import {FaCommentO} from 'react-icons/lib/fa/';
 
 class CommentSingle extends Component {
     render() {
-	    const { comment } = this.props;
+	    const { comment, updateVote } = this.props;
+	    const onVoteUpdateHandler = (vote) => {
+		    updateVote({id: comment.id, voteData: {option: vote+'Vote'}});
+	    };
 	    return (
             <div className='single-comment overflow-auto'>
                 <div className='grid-logo comment-bubble'>
@@ -30,6 +34,10 @@ class CommentSingle extends Component {
 		                {comment.voteScore}
 	                </div>
                 </div>
+	            <div className='sorting-logo float-left'>
+		            <a title="ASC" onClick={() => onVoteUpdateHandler('up')}><TiThumbsUp size={40} /></a>
+		            <a title="DESC" onClick={() => onVoteUpdateHandler('down')}><TiThumbsDown size={40} /></a>
+	            </div>
 	            <div className="post-controls">
 		            <TiEdit size={40} />
 		            Edit comment
@@ -42,17 +50,19 @@ class CommentSingle extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => {
+	const api = searchApis.updateCommentVote;
+
 	return {
-		getCommentsForPost: (postId) => {
-			dispatch(actions.postsSingleAction(postId));
+		updateVote: (postData) => {
+			return api(postData)
+				.then(function(data) {
+					dispatch(actions.commentVoteUpdatedAction(
+						postData.id,
+						postData.voteData.option
+					))
+				});
 		}
 	}
 };
 
-const mapStateToProps = ({posts}) => {
-	return {
-		posts
-	}
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentSingle));
+export default withRouter(connect(undefined, mapDispatchToProps)(CommentSingle));

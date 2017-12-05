@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
 				    data.map( ({id}) => {
 				        return searchApis.fetchCommentsById(id)
                             .then(function(comment) {
-	                            dispatch(actions.commentsAction(comment));
+	                            dispatch(actions.commentsLoadedAction(comment));
                             })
 				    });
 				});

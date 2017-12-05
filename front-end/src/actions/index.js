@@ -1,6 +1,6 @@
 import { categoriesAction } from './categories';
-import { postsLoadedAction, postsAddedAction, postsSortedAction, postsSingleAction, postsByCategoryAction } from './posts';
-import commentsAction from './comments';
+import { postsLoadedAction, postsAddedAction, postsSortedAction, postsSingleAction, postsByCategoryAction, postVoteUpdatedAction, postUpdatedAction } from './posts';
+import { commentsLoadedAction, commentsAddedAction, commentVoteUpdatedAction } from './comments';
 
 export const actions = {
 	categoriesAction,
@@ -9,5 +9,9 @@ export const actions = {
 	postsSortedAction,
 	postsSingleAction,
 	postsByCategoryAction,
-	commentsAction
+	postVoteUpdatedAction,
+	postUpdatedAction,
+	commentsLoadedAction,
+	commentsAddedAction,
+	commentVoteUpdatedAction
 };

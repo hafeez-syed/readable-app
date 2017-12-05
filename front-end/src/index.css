@@ -338,3 +338,11 @@ textarea {
 .text-align-left {
   text-align: left;
 }
+
+.float-left {
+  float: left;
+}
+
+:disabled {
+  opacity: 0.5;
+}

@@ -21,15 +21,13 @@ class CommentsForm extends Component {
     render() {
 		const state = this.state;
 		const props = this.props;
-		const postId = props.postId;
+		const parentId = props.parentId;
 		const {body, author} = state;
-		//debugger;
 		const onSubmitHandler = (eve) => {
 			eve.preventDefault();
-			this.setState({parentId: 'postId'});
-			this;
-			debugger;
-			//props.addComment(state);
+			const state = this.state;
+			state['parentId'] = parentId;
+			props.addComment(state);
 		};
 
 		return (
@@ -55,7 +53,7 @@ class CommentsForm extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	const api = searchApis.addPost;
+	const api = searchApis.addComment;
 
 	return {
 		addComment: (data) => {
@@ -67,13 +65,13 @@ const mapDispatchToProps = (dispatch) => {
 
 			return api(formData)
 				.then(function(data) {
-					dispatch(actions.postsAddedAction(
+					dispatch(actions.commentsAddedAction(
 						{
 							...formData,
 							...data
 						}
 					))
-				} );
+				});
 		}
 	}
 };

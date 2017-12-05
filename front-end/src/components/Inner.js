@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Switch, Route} from 'react-router-dom';
-import { Category, PostList, PostNew, PostDetail } from './';
+import { Category, PostList, PostForm, PostDetail } from './';
 
 class Inner extends Component {
 	render() {
@@ -21,13 +21,15 @@ class Inner extends Component {
 					/>
 					<Route
 						path="/post/new"
-						component={PostNew}
-					    categories={categories}
+						component={PostForm}
 					/>
 					<Route
-						path="/post/:postId"
+						path="/post/:postId/detail"
 						component={PostDetail}
-					    posts={posts}
+					/>
+					<Route
+						path="/post/:postId/edit"
+						component={PostForm}
 					/>
 				</Switch>
 			</div>

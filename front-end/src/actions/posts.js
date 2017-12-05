@@ -3,6 +3,8 @@ export const POST_LOADED = 'POST_LOADED';
 export const POST_SORTED = 'POST_SORTED';
 export const POST_FOUND = 'POST_FOUND';
 export const POST_FOUND_BY_CATEGORY = 'POST_FOUND_BY_CATEGORY';
+export const POST_VOTE_UPDATED = 'POST_VOTE_UPDATED';
+export const POST_UPDATED = 'POST_UPDATED';
 
 export const postsLoadedAction = (posts) => {
     return {
@@ -37,5 +39,22 @@ export const postsByCategoryAction = (category) => {
 	return {
 		type: POST_FOUND_BY_CATEGORY,
 		category
+	};
+};
+
+export const postVoteUpdatedAction = (postId, postVote) => {
+	return {
+		type: POST_VOTE_UPDATED,
+		postId,
+		postVote
+	};
+};
+
+export const postUpdatedAction = (postId, postTitle, postBody) => {
+	return {
+		type: POST_UPDATED,
+		postId,
+		postTitle,
+		postBody,
 	};
 };

@@ -2,7 +2,7 @@ import App from './App';
 import Wrapper from './Wrapper';
 import Category from './categories/CategorySingle';
 import PostList from './posts/PostList';
-import PostNew from './posts/PostNew';
+import PostForm from './posts/PostForm';
 import PostDetail from './posts/PostDetail';
 
 export {
@@ -10,6 +10,6 @@ export {
 	Wrapper,
 	Category,
 	PostList,
-	PostNew,
+	PostForm,
 	PostDetail
 };

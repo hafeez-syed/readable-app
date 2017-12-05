@@ -8,12 +8,6 @@ import {TiTags, TiHeart} from 'react-icons/lib/ti/';
 import {FaComments} from 'react-icons/lib/fa/';
 
 class PostSingle extends Component {
-    componentWillMount() {
-        //debugger;
-    }
-    componentDidMount() {
-        //debugger;
-    }
     render() {
 	    const { post, comments } = this.props;
 	    return (
@@ -25,7 +19,7 @@ class PostSingle extends Component {
 				    {_.capitalize(post.category)}
                 </div>
                 <div className='title'>
-                    <Link to={`/post/${post.id}`}>
+                    <Link to={`/post/${post.id}/detail`}>
 					    {post.title}
                     </Link>
                 </div>
