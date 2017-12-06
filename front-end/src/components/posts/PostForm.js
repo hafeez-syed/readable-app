@@ -63,6 +63,7 @@ class PostNew extends Component {
 			} else {
 				props.updatePost({id: match.params.postId, title: this.state.title, body: this.state.body });
 			}
+			props.history.push('/');
 		};
 
 		return (
