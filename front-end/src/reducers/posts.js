@@ -52,9 +52,6 @@ const posts = (state = [], action) => {
 			return [
 				...state,
 			];
-			return [
-				...state
-			];
 		default:
 			return state;
 	}
