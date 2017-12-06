@@ -1,15 +1,41 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import v1 from 'uuid/v1';
 import * as searchApis from '../../utils/apis';
 import { actions } from '../../actions/';
 
 class CommentsForm extends Component {
 	state = {
+		id: '',
 		parentId: '',
 		body: '',
 		author: ''
+	};
+
+	componentWillMount() {
+		const type = this.props.type;
+
+		if(type === 'edit') {
+			const commentId = this.props.match.params.commentId;
+			const comments = this.props.comments;
+
+			const comment = _.head(comments.filter(function(comment) {
+				return comment.id === commentId;
+			}));
+			const stateMapping = {
+				id: commentId,
+				body: comment.body,
+				author: comment.author
+			};
+	
+			this.updateState(stateMapping);	
+		}
+	};
+
+	updateState = (stateMapping) => {
+		this.setState(stateMapping);
 	};
 
 	onChangeHandler = (eve) => {
@@ -18,16 +44,23 @@ class CommentsForm extends Component {
 		state[eve.target.name] = eve.target.value;
 		this.setState(state);
 	};
+
     render() {
 		const state = this.state;
 		const props = this.props;
 		const parentId = props.parentId;
+		const type = props.type;
+		const disabled = type === 'edit' ? 'disabled' : '';
 		const {body, author} = state;
 		const onSubmitHandler = (eve) => {
 			eve.preventDefault();
 			const state = this.state;
-			state['parentId'] = parentId;
-			props.addComment(state);
+			if(type === 'new') {
+				state['parentId'] = parentId;
+				props.addComment(state);
+			} else {
+				props.updateComment({id: this.state.id, author: this.state.author, body: this.state.body });
+			}
 		};
 
 		return (
@@ -40,9 +73,9 @@ class CommentsForm extends Component {
 
 				        <textarea onChange={this.onChangeHandler} name="body" value={body} type="text" placeholder="Comment"></textarea>
 
-				        <input name="author" type="text" value={author} onChange={this.onChangeHandler} placeholder="Author" />
+				        <input name="author" disabled={disabled} type="text" value={author} onChange={this.onChangeHandler} placeholder="Author" />
 
-				        <button type="submit" >Submit post</button>
+				        <button type="submit">Submit post</button>
 			        </form>
 		        </div>
 
@@ -72,6 +105,22 @@ const mapDispatchToProps = (dispatch) => {
 						}
 					))
 				});
+		},
+		updateComment: (data) => {
+			const formData = {
+				...data,
+				timestamp: Date.now()
+			};
+
+			return searchApis.updateComment(formData)
+				.then(function(response) {
+					dispatch(actions.commentUpdatedAction(
+						formData.id,
+						formData.body,
+						formData.author,
+						formData.timestamp
+					))
+				} );
 		}
 	}
 };

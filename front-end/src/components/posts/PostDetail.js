@@ -66,7 +66,7 @@ class PostDetail extends Component {
 	                    </div>
 
 	                    <div className="post-controls">
-		                    <Link to={`/post/${postId}/edit`}>
+		                    <Link to={`/${post.category}/${postId}/edit`}>
 			                    <TiEdit size={60} />
 		                    </Link>
 		                    Edit
@@ -76,7 +76,7 @@ class PostDetail extends Component {
                     </div>
                 </div>
 
-		        <CommentsForm parentId={postId} />
+		        <CommentsForm type={'new'} parentId={postId} />
 
 		        <CommentsList comments={postComments}  />
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import _ from 'lodash';
@@ -38,8 +38,10 @@ class CommentSingle extends Component {
 		            <a title="ASC" onClick={() => onVoteUpdateHandler('up')}><TiThumbsUp size={40} /></a>
 		            <a title="DESC" onClick={() => onVoteUpdateHandler('down')}><TiThumbsDown size={40} /></a>
 	            </div>
-	            <div className="post-controls">
-		            <TiEdit size={40} />
+				<div className="post-controls">
+					<Link to={`/comment/${comment.id}/edit`}>
+			            <TiEdit size={40} />
+					</Link>
 		            Edit comment
 		            <TiTimes size={40} />
 		            Delete comment

@@ -35,7 +35,7 @@ class PostNew extends Component {
 
 			this.updateState(stateMapping);
 		}
-	}
+	};
 
 	onChangeHandler = (eve) => {
 		eve.preventDefault();
@@ -68,7 +68,7 @@ class PostNew extends Component {
 		return (
 			<div className="post-new sorting-wrapper position-default">
 				<form className="todo__form" onSubmit={onSubmitHandler}>
-					<h3>Add new post</h3>
+					<h3>{type === 'new' ? 'Add new post' : 'Edit post' }</h3>
 
 					<input name="title" value={title} type="text" placeholder="Title" onChange={this.onChangeHandler} />
 
@@ -117,7 +117,7 @@ const mapDispatchToProps = (dispatch) => {
 		updatePost: (data) => {
 			return searchApis.updatePost(data)
 				.then(function(response) {
-					dispatch(actions.postsAddedAction(
+					dispatch(actions.postUpdatedAction(
 						data.id,
 						data.title,
 						data.body

@@ -19,7 +19,7 @@ class PostSingle extends Component {
 				    {_.capitalize(post.category)}
                 </div>
                 <div className='title'>
-                    <Link to={`/post/${post.id}/detail`}>
+                    <Link to={`/${post.category}/${post.id}/detail`}>
 					    {post.title}
                     </Link>
                 </div>

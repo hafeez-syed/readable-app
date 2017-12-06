@@ -1,6 +1,7 @@
 export const COMMENTS_LOADED = 'COMMENTS_LOADED';
 export const COMMENT_ADDED = 'COMMENT_ADDED';
 export const COMMENT_VOTE_UPDATED = 'COMMENT_VOTE_UPDATED';
+export const COMMENT_UPDATED = 'COMMENT_UPDATED';
 
 export const commentsLoadedAction = (comments) => {
     return {
@@ -21,5 +22,16 @@ export const commentVoteUpdatedAction = (commentId, commentVote) => {
 		type: COMMENT_VOTE_UPDATED,
 		commentId,
 		commentVote
+	};
+};
+
+
+export const commentUpdatedAction = (commentId, commentBody, commentAuthor, commentTimestamp) => {
+	return {
+		type: COMMENT_UPDATED,
+		commentId,
+		commentBody,
+		commentAuthor,
+		commentTimestamp
 	};
 };

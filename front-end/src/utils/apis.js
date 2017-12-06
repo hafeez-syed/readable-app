@@ -109,6 +109,15 @@ const updateCommentVote = (data) => {
 		.then(data => data);
 };
 
+const updateComment = (data) => {
+	return fetch(`${URL}/comments/${data.id}`, {
+		method: 'PUT',
+		headers: HEADERS,
+		body: JSON.stringify(data)
+	})
+		.then(res => res.json())
+		.then(data => data);
+};
 
 export {
     fetchCategories,
@@ -119,5 +128,6 @@ export {
 	updatePostVote,
 	updatePost,
 	addComment,
-	updateCommentVote
-}
+	updateCommentVote,
+	updateComment
+};
