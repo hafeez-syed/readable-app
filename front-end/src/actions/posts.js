@@ -5,6 +5,7 @@ export const POST_FOUND = 'POST_FOUND';
 export const POST_FOUND_BY_CATEGORY = 'POST_FOUND_BY_CATEGORY';
 export const POST_VOTE_UPDATED = 'POST_VOTE_UPDATED';
 export const POST_UPDATED = 'POST_UPDATED';
+export const POST_DELETED = 'POST_DELETED';
 
 export const postsLoadedAction = (posts) => {
     return {
@@ -56,5 +57,12 @@ export const postUpdatedAction = (postId, postTitle, postBody) => {
 		postId,
 		postTitle,
 		postBody,
+	};
+};
+
+export const postDeletedAction = (postId) => {
+	return {
+		type: POST_DELETED,
+		postId
 	};
 };

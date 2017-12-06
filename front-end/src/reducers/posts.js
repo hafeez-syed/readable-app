@@ -1,4 +1,4 @@
-import { POST_LOADED, POST_ADDED, POST_SORTED, POST_FOUND, POST_FOUND_BY_CATEGORY, POST_VOTE_UPDATED, POST_UPDATED } from '../actions/posts';
+import { POST_LOADED, POST_ADDED, POST_SORTED, POST_FOUND, POST_FOUND_BY_CATEGORY, POST_VOTE_UPDATED, POST_UPDATED, POST_DELETED } from '../actions/posts';
 const posts = (state = [], action) => {
 	switch(action.type) {
 		case POST_LOADED:
@@ -42,6 +42,16 @@ const posts = (state = [], action) => {
 					post.body = action.postBody;
 				}
 			});
+			return [
+				...state
+			];
+		case POST_DELETED:
+			/*state.map((post) => {
+				if (post.id === action.postId) {
+					post.title = action.postTitle;
+					post.body = action.postBody;
+				}
+			});*/
 			return [
 				...state
 			];

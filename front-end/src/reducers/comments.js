@@ -1,4 +1,4 @@
-import { COMMENTS_LOADED, COMMENT_ADDED, COMMENT_VOTE_UPDATED, COMMENT_UPDATED } from '../actions/comments';
+import { COMMENTS_LOADED, COMMENT_ADDED, COMMENT_VOTE_UPDATED, COMMENT_UPDATED, COMMENT_DELETED_SINGLE, COMMENT_DELETED_ALL } from '../actions/comments';
 const comments = (state = [], action) => {
 	switch(action.type) {
 		case COMMENTS_LOADED:
@@ -31,6 +31,16 @@ const comments = (state = [], action) => {
 			return [
 				...state
 			];
+		case COMMENT_DELETED_SINGLE:
+			/*return [
+				...state,
+				{...action.comments}
+			];*/
+		case COMMENT_DELETED_ALL:
+			/*return [
+				...state,
+				{...action.comments}
+			];*/
 		default:
 			return state;
 	}

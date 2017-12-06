@@ -2,6 +2,8 @@ export const COMMENTS_LOADED = 'COMMENTS_LOADED';
 export const COMMENT_ADDED = 'COMMENT_ADDED';
 export const COMMENT_VOTE_UPDATED = 'COMMENT_VOTE_UPDATED';
 export const COMMENT_UPDATED = 'COMMENT_UPDATED';
+export const COMMENT_DELETED_SINGLE = 'COMMENT_DELETED_SINGLE';
+export const COMMENT_DELETED_ALL = 'COMMENT_DELETED_ALL';
 
 export const commentsLoadedAction = (comments) => {
     return {
@@ -33,5 +35,19 @@ export const commentUpdatedAction = (commentId, commentBody, commentAuthor, comm
 		commentBody,
 		commentAuthor,
 		commentTimestamp
+	};
+};
+
+export const commentDeletedSingleAction = (commentId) => {
+	return {
+		type: COMMENT_DELETED_SINGLE,
+		commentId
+	};
+};
+
+export const commentDeletedAllAction = (parentId) => {
+	return {
+		type: COMMENT_DELETED_ALL,
+		parentId
 	};
 };
