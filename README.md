@@ -10,9 +10,12 @@ To get started developing right away:
 
 * Install and start the API server
     - `cd api-server`
+    - `update '.env' file`
     - `npm install`
     - `node server`
 * In another terminal window, use Create React App to scaffold out the front-end
+    - `cd front-end`
+    - `update '.env' file`
     - `create-react-app frontend`
     - `cd frontend`
     - `npm start`
