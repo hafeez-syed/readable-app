@@ -138,6 +138,7 @@ header a:hover {
 }
 
 .todo__form {
+  background-color: #02b3e4;
   border: 1px solid #ccc;
   padding: 20px;
 }
@@ -345,4 +346,8 @@ textarea {
 
 :disabled {
   opacity: 0.5;
+}
+
+a {
+  cursor: pointer;
 }

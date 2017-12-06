@@ -10,7 +10,10 @@ import {FaCommentO} from 'react-icons/lib/fa/';
 
 class CommentSingle extends Component {
     render() {
-	    const { comment, updateVote } = this.props;
+	    const { comment, updateVote, removeComment } = this.props;
+	    const onCommentDeleteHandler = (commentId) => {
+	    	removeComment(commentId);
+	    };
 	    const onVoteUpdateHandler = (vote) => {
 		    updateVote({id: comment.id, voteData: {option: vote+'Vote'}});
 	    };
@@ -43,7 +46,9 @@ class CommentSingle extends Component {
 			            <TiEdit size={40} />
 					</Link>
 		            Edit comment
-		            <TiTimes size={40} />
+					<a title="Remove comment" onClick={() => onCommentDeleteHandler(comment.id)}>
+			            <TiTimes size={40} />
+					</a>
 		            Delete comment
 	            </div>
             </div>
@@ -52,17 +57,18 @@ class CommentSingle extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	const api = searchApis.updateCommentVote;
-
 	return {
 		updateVote: (postData) => {
-			return api(postData)
+			return searchApis.updateCommentVote(postData)
 				.then(function(data) {
 					dispatch(actions.commentVoteUpdatedAction(
 						postData.id,
 						postData.voteData.option
 					))
 				});
+		},
+		removeComment: (commentId) => {
+			dispatch(actions.commentDeletedSingleAction(commentId));
 		}
 	}
 };

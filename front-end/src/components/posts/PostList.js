@@ -17,19 +17,24 @@ class PostList extends Component {
 			<div>
 				{sorting}
 				<div className='posts-wrapper'>
-					<ul>
-						{
-							posts && posts.length && posts
-								.filter(function(post) {
-									return category ? post.category === category : post;
-								})
-								.map((post, ind) => (
-								<li className='posts-list' key={ind}>
-									<PostSingle post={post} comments={this.getComments(post.id)} />
-								</li>
-							))
-						}
-					</ul>
+					{
+						posts && posts.length ?
+							<ul>
+								{
+									posts && posts.length && posts
+										.filter(function(post) {
+											return category ? post.category === category : post;
+										})
+										.map((post, ind) => (
+											<li className='posts-list' key={ind}>
+												<PostSingle post={post} comments={this.getComments(post.id)} />
+											</li>
+										))
+								}
+							</ul>
+							:
+							<div>Sorry! No records found.</div>
+					}
 				</div>
 			</div>
 		)

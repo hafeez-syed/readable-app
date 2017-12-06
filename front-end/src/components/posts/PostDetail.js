@@ -11,8 +11,12 @@ import {TiThumbsUp, TiThumbsDown, TiTrash, TiEdit} from 'react-icons/lib/ti/';
 
 class PostDetail extends Component {
     render() {
-	    const { posts, comments, match, updateVote } = this.props;
+	    const { posts, comments, match, updateVote, removePost, history } = this.props;
 	    const postId = match.params.postId;
+	    const onPostDeleteHandler = (postId) => {
+			removePost(postId);
+		    history.push('/');
+	    };
 	    const onVoteUpdateHandler = (vote) => {
 			updateVote({id: postId, voteData: {option: vote+'Vote'}});
 	    };
@@ -70,7 +74,9 @@ class PostDetail extends Component {
 			                    <TiEdit size={60} />
 		                    </Link>
 		                    Edit
-		                    <TiTrash size={60} />
+		                    <a title="Remove post" onClick={() => onPostDeleteHandler(post.id)}>
+			                    <TiTrash size={60} />
+		                    </a>
 		                    Delete
 	                    </div>
                     </div>
@@ -97,6 +103,10 @@ const mapDispatchToProps = (dispatch) => {
 						postData.voteData.option
 					))
 				});
+		},
+		removePost: (postId) => {
+			dispatch(actions.postDeletedAction(postId));
+			dispatch(actions.commentDeletedAllAction(postId));
 		}
 	}
 };

@@ -1,4 +1,6 @@
+import _ from 'lodash';
 import { COMMENTS_LOADED, COMMENT_ADDED, COMMENT_VOTE_UPDATED, COMMENT_UPDATED, COMMENT_DELETED_SINGLE, COMMENT_DELETED_ALL } from '../actions/comments';
+
 const comments = (state = [], action) => {
 	switch(action.type) {
 		case COMMENTS_LOADED:
@@ -32,15 +34,15 @@ const comments = (state = [], action) => {
 				...state
 			];
 		case COMMENT_DELETED_SINGLE:
-			/*return [
+			_.remove(state, {id: action.commentId});
+			return [
 				...state,
-				{...action.comments}
-			];*/
+			];
 		case COMMENT_DELETED_ALL:
-			/*return [
+			_.remove(state, {parentId: action.parentId});
+			return [
 				...state,
-				{...action.comments}
-			];*/
+			];
 		default:
 			return state;
 	}

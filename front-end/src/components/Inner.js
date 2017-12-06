@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route} from 'react-router-dom';
-import { Category, PostList, PostForm, PostDetail, CommentEdit } from './';
+import { CategorySingle, PostList, PostForm, PostDetail, CommentEdit } from './';
 
 class Inner extends Component {
 	render() {
@@ -30,7 +30,7 @@ class Inner extends Component {
 					/>
 					<Route
 						path="/:category"
-					    component={Category}
+					    component={CategorySingle}
 					/>
 			</Switch>
 			</div>

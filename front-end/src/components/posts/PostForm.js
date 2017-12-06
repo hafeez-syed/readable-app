@@ -66,7 +66,7 @@ class PostNew extends Component {
 		};
 
 		return (
-			<div className="post-new sorting-wrapper position-default">
+			<div className="sorting-wrapper position-default">
 				<form className="todo__form" onSubmit={onSubmitHandler}>
 					<h3>{type === 'new' ? 'Add new post' : 'Edit post' }</h3>
 

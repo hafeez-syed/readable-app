@@ -67,7 +67,7 @@ class CommentsForm extends Component {
 	        <div>
                 <h3 className="title-heading"> </h3>
 
-		        <div className="post-new sorting-wrapper position-default">
+		        <div className="sorting-wrapper position-default">
 			        <form className="todo__form" onSubmit={onSubmitHandler}>
 				        <h3>Add a comment</h3>
 
