@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route} from 'react-router-dom';
+import { Switch, Route, Redirect} from 'react-router-dom';
 import { CategorySingle, PostList, PostForm, PostDetail, CommentEdit, PageNotFound } from './';
 
 class Inner extends Component {
@@ -11,6 +11,10 @@ class Inner extends Component {
 						exact
 						path="/"
 						component={PostList}
+					/>
+					<Route
+						path="/404"
+						component={PageNotFound}
 					/>
 					<Route
 						path="/comment/:commentId/edit"
@@ -32,10 +36,7 @@ class Inner extends Component {
 						path="/:category"
 					    component={CategorySingle}
 					/>
-					<Route
-						component={PageNotFound}
-					/>
-
+					<Redirect to="/404"/>
 			</Switch>
 			</div>
 		)

@@ -24,6 +24,11 @@ class CommentsForm extends Component {
 			const comment = _.head(comments.filter(function(comment) {
 				return comment.id === commentId;
 			}));
+
+			if(!comment) {
+				this.props.history.push('/404');
+			}
+
 			const stateMapping = {
 				id: commentId,
 				body: comment.body,
