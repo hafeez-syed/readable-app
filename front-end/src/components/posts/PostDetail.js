@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import CommentsForm from '../comments/CommentsForm';
 import CommentsList from '../comments/CommentsList';
 import * as searchApis from '../../utils/apis';
-import { actions } from '../../actions/';
+import { postVoteUpdatedAction, postDeletedAction } from '../../actions/posts';
+import { commentDeletedAllAction } from '../../actions/comments';
 import _ from 'lodash';
 import Moment from 'react-moment';
 import {TiThumbsUp, TiThumbsDown, TiTrash, TiEdit} from 'react-icons/lib/ti/';
@@ -98,15 +99,15 @@ const mapDispatchToProps = (dispatch) => {
 		updateVote: (postData) => {
 			return api(postData)
 				.then(function(data) {
-					dispatch(actions.postVoteUpdatedAction(
+					dispatch(postVoteUpdatedAction(
 						postData.id,
 						postData.voteData.option
 					))
 				});
 		},
 		removePost: (postId) => {
-			dispatch(actions.postDeletedAction(postId));
-			dispatch(actions.commentDeletedAllAction(postId));
+			dispatch(postDeletedAction(postId));
+			dispatch(commentDeletedAllAction(postId));
 		}
 	}
 };

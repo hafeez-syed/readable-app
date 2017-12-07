@@ -5,6 +5,7 @@ import PostList from './posts/PostList';
 import PostForm from './posts/PostForm';
 import PostDetail from './posts/PostDetail';
 import CommentEdit from './comments/CommentEdit';
+import PageNotFound from './PageNotFound';
 
 export {
 	App,
@@ -13,5 +14,6 @@ export {
 	PostList,
 	PostForm,
 	PostDetail,
-	CommentEdit
+	CommentEdit,
+	PageNotFound
 };

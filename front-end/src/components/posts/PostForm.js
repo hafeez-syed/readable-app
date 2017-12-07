@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import v1 from 'uuid/v1';
 import * as searchApis from '../../utils/apis';
-import { actions } from '../../actions/index';
+import { postsAddedAction, postUpdatedAction } from '../../actions/posts';
 
 class PostNew extends Component {
 	state = {
@@ -107,7 +107,7 @@ const mapDispatchToProps = (dispatch) => {
 
 			return searchApis.addPost(formData)
 				.then(function(data) {
-					dispatch(actions.postsAddedAction(
+					dispatch(postsAddedAction(
 						{
 							...formData,
 							...data
@@ -118,7 +118,7 @@ const mapDispatchToProps = (dispatch) => {
 		updatePost: (data) => {
 			return searchApis.updatePost(data)
 				.then(function(response) {
-					dispatch(actions.postUpdatedAction(
+					dispatch(postUpdatedAction(
 						data.id,
 						data.title,
 						data.body

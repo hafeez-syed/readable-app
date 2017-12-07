@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { actions } from '../../actions/index';
+import { postsSortedAction } from '../../actions/posts';
 import PostSingle from './PostSingle';
 import SortList from '../SortList';
 
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
 		updateSort: (posts, type, order) => {
 			order = (order === 'up') ? 'asc' : 'desc';
 			posts = _.orderBy(posts, type, order);
-			dispatch(actions.postsSortedAction(posts))
+			dispatch(postsSortedAction(posts))
 		}
 	}
 };

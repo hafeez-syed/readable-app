@@ -1,11 +1,13 @@
-export const POST_ADDED = 'POST_ADDED';
-export const POST_LOADED = 'POST_LOADED';
-export const POST_SORTED = 'POST_SORTED';
-export const POST_FOUND = 'POST_FOUND';
-export const POST_FOUND_BY_CATEGORY = 'POST_FOUND_BY_CATEGORY';
-export const POST_VOTE_UPDATED = 'POST_VOTE_UPDATED';
-export const POST_UPDATED = 'POST_UPDATED';
-export const POST_DELETED = 'POST_DELETED';
+import {
+	POST_LOADED, 
+	POST_ADDED, 
+	POST_SORTED, 
+	POST_FOUND, 
+	POST_FOUND_BY_CATEGORY, 
+	POST_VOTE_UPDATED, 
+	POST_UPDATED, 
+	POST_DELETED 
+} from './types';
 
 export const postsLoadedAction = (posts) => {
     return {

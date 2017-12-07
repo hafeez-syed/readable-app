@@ -1,7 +1,4 @@
-const API_HOST = process.env.REACT_APP_API_HOST;
-const API_PORT = process.env.REACT_APP_API_SERVER_PORT;
-const API_PROTOCOL = process.env.REACT_APP_API_PROTOCOL;
-const URL = `${API_PROTOCOL}://${API_HOST}:${API_PORT}`;
+const URL = process.env.REACT_APP_BACKEND ? `${process.env.REACT_APP_BACKEND}` : 'http://localhost:3001';
 const HEADERS = {
 	'Content-Type': 'application/json',
 	'Authorization': 'Bearer ' + Date.now()

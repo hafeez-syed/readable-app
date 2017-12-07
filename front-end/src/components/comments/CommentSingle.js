@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import _ from 'lodash';
 import * as searchApis from '../../utils/apis';
-import { actions } from '../../actions/';
+import { commentVoteUpdatedAction, commentDeletedSingleAction } from '../../actions/comments';
 import {TiTimes, TiHeart, TiEdit, TiThumbsUp, TiThumbsDown} from 'react-icons/lib/ti/';
 import {FaCommentO} from 'react-icons/lib/fa/';
 
@@ -61,14 +61,14 @@ const mapDispatchToProps = (dispatch) => {
 		updateVote: (postData) => {
 			return searchApis.updateCommentVote(postData)
 				.then(function(data) {
-					dispatch(actions.commentVoteUpdatedAction(
+					dispatch(commentVoteUpdatedAction(
 						postData.id,
 						postData.voteData.option
 					))
 				});
 		},
 		removeComment: (commentId) => {
-			dispatch(actions.commentDeletedSingleAction(commentId));
+			dispatch(commentDeletedSingleAction(commentId));
 		}
 	}
 };

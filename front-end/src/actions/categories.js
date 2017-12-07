@@ -1,8 +1,10 @@
-export const CATEGORY_LOADED = 'CATEGORY_LOADED';
+import {CATEGORY_LOADED} from './types';
 
-export const categoriesAction = (categories) => {
+const categoriesAction = (categories) => {
     return {
         type: CATEGORY_LOADED,
 	    categories
     };
 };
+
+export default categoriesAction;

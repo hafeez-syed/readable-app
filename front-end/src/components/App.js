@@ -1,22 +1,19 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Wrapper from './Wrapper';
-import { actions } from '../actions/';
 
-const mapStateToProps = (state) => {
+import * as categoriesAction from '../actions/categories';
+import * as postsActions from '../actions/posts';
+import * as commentsActions from '../actions/comments';
+
+const mapStateToProps = ({categoriesAction, postsActions, commentsActions}) => {
     return {
-        categories: state.categories,
-        posts: state.posts,
-        comments: state.comments,
-        sorting: state.sorting
+        categoriesAction,
+        postsActions,
+        commentsActions
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(actions, dispatch);
-};
-
-const App = withRouter(connect(mapStateToProps, mapDispatchToProps)(Wrapper));
+const App = withRouter(connect(mapStateToProps, {categoriesAction, postsActions, commentsActions} )(Wrapper));
 
 export default App;

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import v1 from 'uuid/v1';
 import * as searchApis from '../../utils/apis';
-import { actions } from '../../actions/';
+import { commentsAddedAction, commentUpdatedAction } from '../../actions/comments';
 
 class CommentsForm extends Component {
 	state = {
@@ -61,6 +61,7 @@ class CommentsForm extends Component {
 			} else {
 				props.updateComment({id: this.state.id, author: this.state.author, body: this.state.body });
 			}
+			props.history.goBack();
 		};
 
 		return (
@@ -98,7 +99,7 @@ const mapDispatchToProps = (dispatch) => {
 
 			return api(formData)
 				.then(function(data) {
-					dispatch(actions.commentsAddedAction(
+					dispatch(commentsAddedAction(
 						{
 							...formData,
 							...data
@@ -114,7 +115,7 @@ const mapDispatchToProps = (dispatch) => {
 
 			return searchApis.updateComment(formData)
 				.then(function(response) {
-					dispatch(actions.commentUpdatedAction(
+					dispatch(commentUpdatedAction(
 						formData.id,
 						formData.body,
 						formData.author,

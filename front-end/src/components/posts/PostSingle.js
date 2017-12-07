@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import _ from 'lodash';
-import { actions } from '../../actions/';
+import { postsSingleAction } from '../../actions/posts';
 import {TiTags, TiHeart} from 'react-icons/lib/ti/';
 import {FaComments} from 'react-icons/lib/fa/';
 
@@ -44,7 +44,7 @@ class PostSingle extends Component {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		getCommentsForPost: (postId) => {
-			dispatch(actions.postsSingleAction(postId));
+			dispatch(postsSingleAction(postId));
 		}
 	}
 };

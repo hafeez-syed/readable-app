@@ -1,5 +1,12 @@
 import _ from 'lodash';
-import { COMMENTS_LOADED, COMMENT_ADDED, COMMENT_VOTE_UPDATED, COMMENT_UPDATED, COMMENT_DELETED_SINGLE, COMMENT_DELETED_ALL } from '../actions/comments';
+import { 
+	COMMENTS_LOADED, 
+	COMMENT_ADDED, 
+	COMMENT_VOTE_UPDATED, 
+	COMMENT_UPDATED, 
+	COMMENT_DELETED_SINGLE, 
+	COMMENT_DELETED_ALL 
+} from '../actions/types';
 
 const comments = (state = [], action) => {
 	switch(action.type) {

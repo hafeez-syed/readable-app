@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route} from 'react-router-dom';
-import { CategorySingle, PostList, PostForm, PostDetail, CommentEdit } from './';
+import { CategorySingle, PostList, PostForm, PostDetail, CommentEdit, PageNotFound } from './';
 
 class Inner extends Component {
 	render() {
@@ -16,7 +16,7 @@ class Inner extends Component {
 						path="/comment/:commentId/edit"
 						component={CommentEdit}
 					/>
-				<Route
+					<Route
 						path="/post/new"
 						component={PostForm}
 					/>
@@ -32,6 +32,10 @@ class Inner extends Component {
 						path="/:category"
 					    component={CategorySingle}
 					/>
+					<Route
+						component={PageNotFound}
+					/>
+
 			</Switch>
 			</div>
 		)

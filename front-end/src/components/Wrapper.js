@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import MdLibraryBooks from 'react-icons/lib/md/library-books';
 import { connect } from 'react-redux';
-import { actions } from '../actions/index';
+import categoriesAction from '../actions/categories';
+import { postsLoadedAction } from '../actions/posts';
+import { commentsLoadedAction } from '../actions/comments';
+
 import * as searchApis from '../utils/apis';
 
 import '../App.css';
@@ -42,16 +45,16 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		getAllCategories: () => {
 			return searchApis.fetchCategories()
-				.then((data) => dispatch(actions.categoriesAction(data)));
+				.then((data) => dispatch(categoriesAction(data)));
 		},
 		getAllPosts: () => {
 			return searchApis.fetchPosts()
 				.then(function(data) {
-				    dispatch(actions.postsLoadedAction(data));
+				    dispatch(postsLoadedAction(data));
 				    data.map( ({id}) => {
 				        return searchApis.fetchCommentsById(id)
                             .then(function(comment) {
-	                            dispatch(actions.commentsLoadedAction(comment));
+	                            dispatch(commentsLoadedAction(comment));
                             })
 				    });
 				});
