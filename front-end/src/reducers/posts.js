@@ -38,28 +38,31 @@ const posts = (state = [], action) => {
 				})
 			];
 		case POST_VOTE_UPDATED:
-			state.map((post) => {
-				if (post.id === action.postId) {
-					post.voteScore = (action.postVote === 'upVote') ? post.voteScore + 1 : post.voteScore - 1;
-				}
-			});
-			return [
-				...state
-			];
-		case POST_UPDATED:
-			state.map((post) => {
-				if (post.id === action.postId) {
-					post.title = action.postTitle;
-					post.body = action.postBody;
-				}
-			});
-			return [
-				...state
-			];
-		case POST_DELETED:
-			_.remove(state, {id: action.postId});
 			return [
 				...state,
+				...state
+					.filter((post) => post.id === action.postId)
+					.map((post) => {
+						post.voteScore = (action.postVote === 'upVote') ? post.voteScore + 1 : post.voteScore - 1;
+						return post;
+					})
+			];
+		case POST_UPDATED:
+			return [
+				...state,
+				...state
+                    .filter((post) => post.id === action.postId)
+					.map((post) => {
+                        post.title = action.postTitle;
+                        post.body = action.postBody;
+                        return post;
+                })
+			];
+		case POST_DELETED:
+			const index = _.findIndex(state, ['id', action.postId]);
+			return [
+				...state.slice(0, index),
+				...state.slice(index + 1)
 			];
 		default:
 			return state;

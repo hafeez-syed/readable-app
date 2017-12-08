@@ -21,31 +21,34 @@ const comments = (state = [], action) => {
 				{...action.comments}
 			];
 		case COMMENT_VOTE_UPDATED:
-			state.map((comment) => {
-				if (comment.id === action.commentId) {
-					comment.voteScore = (action.commentVote === 'upVote') ? comment.voteScore + 1 : comment.voteScore - 1;
-				}
-			});
-			return [
-				...state
-			];
-		case COMMENT_UPDATED:
-			state.map((comment) => {
-				if (comment.id === action.commentId) {
-					comment.body = action.commentBody;
-					comment.author = action.commentAuthor;
-					comment.timestamp = action.commentTimestamp;
-				}
-			});
-			return [
-				...state
-			];
-		case COMMENT_DELETED_SINGLE:
-			_.remove(state, {id: action.commentId});
 			return [
 				...state,
+				...state
+					.filter((comment) => comment.id === action.commentId)
+					.map((comment) => {
+                        comment.voteScore = (action.commentVote === 'upVote') ? comment.voteScore + 1 : comment.voteScore - 1;
+                        return comment;
+                })
 			];
-		case COMMENT_DELETED_ALL:
+		case COMMENT_UPDATED:
+			return [
+				...state,
+				...state
+                    .filter((comment) => comment.id === action.commentId)
+					.map((comment) => {
+                        comment.body = action.commentBody;
+                        comment.author = action.commentAuthor;
+                        comment.timestamp = action.commentTimestamp;
+                        return comment;
+                })
+			];
+		case COMMENT_DELETED_SINGLE:
+            const index = _.findIndex(state, ['id', action.commentId]);
+            return [
+                ...state.slice(0, index),
+                ...state.slice(index + 1)
+            ];
+        case COMMENT_DELETED_ALL:
 			_.remove(state, {parentId: action.parentId});
 			return [
 				...state,
