@@ -37,7 +37,7 @@ class Inner extends Component {
 					    component={CategorySingle}
 					/>
 					<Redirect to="/404"/>
-			</Switch>
+				</Switch>
 			</div>
 		)
 	}

@@ -38,25 +38,25 @@ const posts = (state = [], action) => {
 				})
 			];
 		case POST_VOTE_UPDATED:
+			state
+				.filter((post) => post.id === action.postId)
+				.map((post) => {
+					post.voteScore = (action.postVote === 'upVote') ? post.voteScore + 1 : post.voteScore - 1;
+					return post;
+				});
 			return [
-				...state,
 				...state
-					.filter((post) => post.id === action.postId)
-					.map((post) => {
-						post.voteScore = (action.postVote === 'upVote') ? post.voteScore + 1 : post.voteScore - 1;
-						return post;
-					})
 			];
 		case POST_UPDATED:
+			state
+				.filter((post) => post.id === action.postId)
+				.map((post) => {
+					post.title = action.postTitle;
+					post.body = action.postBody;
+					return post;
+				});
 			return [
 				...state,
-				...state
-                    .filter((post) => post.id === action.postId)
-					.map((post) => {
-                        post.title = action.postTitle;
-                        post.body = action.postBody;
-                        return post;
-                })
 			];
 		case POST_DELETED:
 			const index = _.findIndex(state, ['id', action.postId]);

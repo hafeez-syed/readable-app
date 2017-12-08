@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {TiThumbsUp, TiThumbsDown, TiTime, TiDocumentAdd} from 'react-icons/lib/ti';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 const SortList = (props) => {
     const updateSort = props.updateSort;
@@ -22,11 +23,13 @@ const SortList = (props) => {
 
             <p>&nbsp;</p>
 
-            <div className='sort-list'>
+            <div className='sort-list text-align-center'>
                 <h4>Add new post</h4>
                 <div className='sorting-logo' title='Add new post'>
                     <Link to="/post/new">
-                        <TiDocumentAdd size={60} />
+                        <FloatingActionButton secondary={true}>
+                            <TiDocumentAdd size={40} />
+                        </FloatingActionButton>
                     </Link>
                 </div>
             </div>

@@ -3,13 +3,18 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import _ from 'lodash';
-import { postsSingleAction } from '../../actions/posts';
-import {TiTags, TiHeart} from 'react-icons/lib/ti/';
-import {FaComments} from 'react-icons/lib/fa/';
+import { postDeletedAction, postsSingleAction } from '../../actions/posts';
+import { commentDeletedAllAction } from '../../actions/comments';
+import {TiTags, TiHeart, TiTrash, TiEdit} from 'react-icons/lib/ti/';
+import Badge from 'material-ui/Badge'
+import {FaCommentsO} from 'react-icons/lib/fa/';
 
 class PostSingle extends Component {
     render() {
-	    const { post, comments } = this.props;
+	    const { post, comments, removePost } = this.props;
+	    const onPostDeleteHandler = (postId) => {
+		    removePost(postId);
+	    };
 	    return (
             <div className='single-post'>
                 <div className='grid-logo'>
@@ -29,13 +34,34 @@ class PostSingle extends Component {
                     </Moment>
                 </div>
                 <div className='votes'>
-                    <TiHeart className="icon-heart" size={30} />
-				    {post.voteScore}
+	                <Badge
+		                badgeContent={post.voteScore}
+		                primary={true}
+		                badgeStyle={{top: 4, right: 4}}
+	                >
+		                <TiHeart className="icon-heart" size={30} />
+	                </Badge>
+				    {}
                 </div>
                 <div className='votes'>
-                    <FaComments className="icon-comment" size={30} />
-				    {comments.length}
+	                <Badge
+		                badgeContent={comments.length}
+		                secondary={true}
+		                badgeStyle={{top: 4, right: 4}}
+	                >
+	                    <FaCommentsO className="icon-comment" size={30} />
+	                </Badge>
                 </div>
+	            <div className="post-controls line-height-70">
+		            <Link to={`/${post.category}/${post.id}/edit`}>
+			            <TiEdit size={30}/>
+		            </Link>
+		            Edit
+		            <a title="Remove post" onClick={() => onPostDeleteHandler(post.id)}>
+			            <TiTrash size={30}/>
+		            </a>
+		            Delete
+	            </div>
             </div>
 	    )
     }
@@ -45,6 +71,10 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		getCommentsForPost: (postId) => {
 			dispatch(postsSingleAction(postId));
+		},
+		removePost: (postId) => {
+			dispatch(postDeletedAction(postId));
+			dispatch(commentDeletedAllAction(postId));
 		}
 	}
 };

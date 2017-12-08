@@ -65,8 +65,8 @@ class CommentsForm extends Component {
 				props.addComment(state);
 			} else {
 				props.updateComment({id: this.state.id, author: this.state.author, body: this.state.body });
+				props.history.goBack();
 			}
-			props.history.goBack();
 		};
 
 		return (

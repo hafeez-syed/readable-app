@@ -16,8 +16,10 @@ import Inner from '../components/Inner';
 
 class Wrapper extends Component {
 	componentWillMount() {
-	    this.props.getAllCategories();
-	    this.props.getAllPosts();
+		if(this.props.location.pathname === '/') {
+			this.props.getAllCategories();
+			this.props.getAllPosts();
+		}
 	}
 	render() {
 	    const {categories, comments} = this.props;

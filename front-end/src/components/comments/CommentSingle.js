@@ -7,6 +7,7 @@ import * as searchApis from '../../utils/apis';
 import { commentVoteUpdatedAction, commentDeletedSingleAction } from '../../actions/comments';
 import {TiTimes, TiHeart, TiEdit, TiThumbsUp, TiThumbsDown} from 'react-icons/lib/ti/';
 import {FaCommentO} from 'react-icons/lib/fa/';
+import Badge from 'material-ui/Badge'
 
 class CommentSingle extends Component {
     render() {
@@ -33,8 +34,12 @@ class CommentSingle extends Component {
                 </div>
                 <div className='votes'>
 	                <div className="text-align-left">
-		                <TiHeart className="icon-heart" size={30} />
-		                {comment.voteScore}
+		                <Badge
+		                    badgeContent={comment.voteScore}
+		                    primary={true}
+		                >
+			                <TiHeart className="icon-heart" size={30} />
+		                </Badge>
 	                </div>
                 </div>
 	            <div className='sorting-logo float-left'>

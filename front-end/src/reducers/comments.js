@@ -21,26 +21,26 @@ const comments = (state = [], action) => {
 				{...action.comments}
 			];
 		case COMMENT_VOTE_UPDATED:
+			state
+				.filter((comment) => comment.id === action.commentId)
+				.map((comment) => {
+					comment.voteScore = (action.commentVote === 'upVote') ? comment.voteScore + 1 : comment.voteScore - 1;
+					return comment;
+				});
 			return [
-				...state,
 				...state
-					.filter((comment) => comment.id === action.commentId)
-					.map((comment) => {
-                        comment.voteScore = (action.commentVote === 'upVote') ? comment.voteScore + 1 : comment.voteScore - 1;
-                        return comment;
-                })
 			];
 		case COMMENT_UPDATED:
+			state
+				.filter((comment) => comment.id === action.commentId)
+				.map((comment) => {
+					comment.body = action.commentBody;
+					comment.author = action.commentAuthor;
+					comment.timestamp = action.commentTimestamp;
+					return comment;
+				});
 			return [
-				...state,
 				...state
-                    .filter((comment) => comment.id === action.commentId)
-					.map((comment) => {
-                        comment.body = action.commentBody;
-                        comment.author = action.commentAuthor;
-                        comment.timestamp = action.commentTimestamp;
-                        return comment;
-                })
 			];
 		case COMMENT_DELETED_SINGLE:
             const index = _.findIndex(state, ['id', action.commentId]);
